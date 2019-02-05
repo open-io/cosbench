@@ -28,7 +28,7 @@ import com.intel.cosbench.log.Logger;
 
 /**
  * The model class mapping to "workload" in configuration xml with following form:
- * 	<workload name="name" description="desc" />
+ *     <workload name="name" description="desc" />
  * 
  * @author ywang19, qzheng7
  *
@@ -70,13 +70,13 @@ public class Workload {
     }
     
     public String getTrigger() {
-		return trigger;
-	}
+        return trigger;
+    }
 
-	public void setTrigger(String trigger) {
-		this.trigger = trigger;
-	}
-	
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
+    }
+    
     public String getConfig() {
         return config;
     }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,7 +59,7 @@ public interface KeystoneConstants {
 
     String AUTH_SERVICE_KEY = "service";
     String AUTH_SERVICE_DEFAULT = "swift";
-    
+
     String AUTH_REGION_KEY = "region";
     String AUTH_REGION_DEFAULT = "regionOne";
 }

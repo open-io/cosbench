@@ -10,7 +10,7 @@ public class CdmiSwiftClientException extends HttpResponseException {
     private StatusLine httpStatusLine;
 
     public CdmiSwiftClientException(int code, String message) {
-    	super(code, message);
+        super(code, message);
     }
     
     public CdmiSwiftClientException(int code, String message, Header[] httpHeaders,

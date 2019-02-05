@@ -35,7 +35,7 @@ public abstract class BaseCdmiClient {
         this.raise_delete_errors = flag;
         
         for(String key: headerKV.keySet())
-        	this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));    
+            this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));    
     }
 
     public abstract void dispose();

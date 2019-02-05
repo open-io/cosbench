@@ -25,7 +25,7 @@ import com.intel.cosbench.log.Logger;
 
 /**
  * The model class mapping to "workflow" in configuration xml with following form:
- * 	<workflow />
+ *     <workflow />
  * 
  * @author ywang19, qzheng7
  *
@@ -40,14 +40,14 @@ public class Workflow implements Iterable<Stage> {
     }
 
     public String getConfig() {
-		return config;
-	}
+        return config;
+    }
 
-	public void setConfig(String config) {
-		this.config = config;
-	}
+    public void setConfig(String config) {
+        this.config = config;
+    }
 
-	public List<Stage> getStages() {
+    public List<Stage> getStages() {
         return stages;
     }
 
@@ -55,7 +55,7 @@ public class Workflow implements Iterable<Stage> {
         if (stages == null || stages.isEmpty())
             throw new ConfigException("workflow must have stages");
         for(Stage stage: stages) {
-        	stage.setConfig(ConfigUtils.inherit(stage.getConfig(), this.config));
+            stage.setConfig(ConfigUtils.inherit(stage.getConfig(), this.config));
         }
         this.stages = stages;
     }
@@ -71,10 +71,10 @@ public class Workflow implements Iterable<Stage> {
 
     @Override
     public Iterator<Stage> iterator() {
-    	if(stages == null){
-    		stages = new ArrayList();
-    	}
-    	return stages.iterator();
+        if(stages == null){
+            stages = new ArrayList();
+        }
+        return stages.iterator();
     }
 
     public void validate() {

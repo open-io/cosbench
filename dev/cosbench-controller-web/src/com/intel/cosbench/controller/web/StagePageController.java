@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,13 +57,13 @@ public class StagePageController extends AbstractController {
         StageInfo sInfo = wInfo.getStageInfo(sid);
         if (sInfo == null)
             throw new NotFoundException();
-		if (controller.getloadArch() && sInfo.getSnapshotRegistry().getSize() == 0)
-			try {
-				controller.getWorkloadLoader().loadStagePageInfo(wInfo,
-						sInfo.getId());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+        if (controller.getloadArch() && sInfo.getSnapshotRegistry().getSize() == 0)
+            try {
+                controller.getWorkloadLoader().loadStagePageInfo(wInfo,
+                        sInfo.getId());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         return process(wInfo, sInfo);
     }
 

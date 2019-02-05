@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,13 +78,13 @@ public class Tasklets {
         }
         return result;
     }
-    
+
     public static List<Tasklet> newTriggers(String trigger, DriverRegistry registry, boolean option, String wsId) {
-    	List<Tasklet> result = new ArrayList<Tasklet>();
+        List<Tasklet> result = new ArrayList<Tasklet>();
         for (DriverContext driver : registry) {
             result.add(new Trigger(driver, trigger, option, wsId));
         }
         return result;
-	}
+    }
 
 }

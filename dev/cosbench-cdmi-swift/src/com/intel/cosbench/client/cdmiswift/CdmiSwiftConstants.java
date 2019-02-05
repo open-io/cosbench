@@ -10,15 +10,15 @@ public interface CdmiSwiftConstants {
 
     String ROOT_PATH_KEY = "root_path";
     String ROOT_PATH_DEFAULT = "/cdmi";
-    
+
     String STORAGE_URL_KEY = "storage_url";
     String STORAGE_URL_DEFAULT = "http://127.0.0.1:8080/cdmi"; // default storage url for CDMI RI Server
-    
+
     // --------------------------------------------------------------------------
     // CONTEXT NEEDS FROM AUTH MODULE
     // --------------------------------------------------------------------------
     String AUTH_TOKEN_KEY = "token";
-    
+
     // --------------------------------------------------------------------------
     // Storage RESTful API
     // --------------------------------------------------------------------------

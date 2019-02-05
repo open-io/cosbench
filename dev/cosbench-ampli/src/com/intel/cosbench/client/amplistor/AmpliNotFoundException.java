@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import org.apache.http.StatusLine;
 public class AmpliNotFoundException extends AmpliException {
 
     /**
-	 * 
-	 */
+     * 
+     */
     private static final long serialVersionUID = -8231309074378291367L;
 
     public AmpliNotFoundException(String message, Header[] httpHeaders,

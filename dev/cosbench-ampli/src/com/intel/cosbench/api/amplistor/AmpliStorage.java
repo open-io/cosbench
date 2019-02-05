@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,7 +70,7 @@ public class AmpliStorage extends NoneStorage {
         parms.put(TIMEOUT_KEY, timeout);
 
         logger.debug("using storage config: {}", parms);
-        
+
         HttpClient httpClient = HttpClientUtil.createHttpClient(timeout);
         client = new AmpliClient(httpClient, host, port, ns_root);
         logger.debug("ampli client has been initialized");
@@ -89,10 +89,10 @@ public class AmpliStorage extends NoneStorage {
 
     @Override
     public void abort() {
-    	super.abort();
-    	client.abort();
+        super.abort();
+        client.abort();
     }
-    
+
     @Override
     public InputStream getObject(String container, String object, Config config) {
         super.getObject(container, object, config);

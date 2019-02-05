@@ -7,9 +7,9 @@ import com.intel.cosbench.model.WorkloadInfo;
 
 public interface WorkloadFileLoader {
 
-	void init(BufferedReader reader, WorkloadInfo workloadContext) throws IOException;
-	
-	public void load() throws IOException;
+    void init(BufferedReader reader, WorkloadInfo workloadContext) throws IOException;
+
+    public void load() throws IOException;
 
 
 

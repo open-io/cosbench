@@ -31,39 +31,39 @@ import com.intel.cosbench.api.context.AuthContext;
  */
 public class HttpAuthContext extends AuthContext {
 
-	public HttpAuthContext(String auth_url, String username, String password, HttpClient client) {
-		this.put(AUTH_URL_KEY, auth_url);
-		this.put(AUTH_USERNAME_KEY, username);
-		this.put(AUTH_PASSWORD_KEY, password);
-		this.put(AUTH_CLIENT_KEY, client);
-	}
-	
-	@Override
-	public String getID(String meta) {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getID());
-		builder.append(";meta=");
-		builder.append(meta);
-		
-		return builder.toString();
-	}
+    public HttpAuthContext(String auth_url, String username, String password, HttpClient client) {
+        this.put(AUTH_URL_KEY, auth_url);
+        this.put(AUTH_USERNAME_KEY, username);
+        this.put(AUTH_PASSWORD_KEY, password);
+        this.put(AUTH_CLIENT_KEY, client);
+    }
+    
+    @Override
+    public String getID(String meta) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(getID());
+        builder.append(";meta=");
+        builder.append(meta);
+        
+        return builder.toString();
+    }
 
-	@Override
-	public String getID() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(AUTH_URL_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_URL_KEY));
-		builder.append(";");
-		builder.append(AUTH_USERNAME_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_USERNAME_KEY));
-		builder.append(";");
-		builder.append(AUTH_PASSWORD_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_PASSWORD_KEY));
-				
-		return builder.toString();
-	}
+    @Override
+    public String getID() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(AUTH_URL_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_URL_KEY));
+        builder.append(";");
+        builder.append(AUTH_USERNAME_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_USERNAME_KEY));
+        builder.append(";");
+        builder.append(AUTH_PASSWORD_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_PASSWORD_KEY));
+                
+        return builder.toString();
+    }
 
 }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,7 +63,7 @@ class Aborter extends AbstractCommandTasklet<AbortResponse> {
 
     @Override
     protected void handleResponse(AbortResponse response) {
-    	Report report = new Report();
+        Report report = new Report();
         for (Metrics metrics : response.getReport())
             report.addMetrics(metrics);
         context.setReport(report);

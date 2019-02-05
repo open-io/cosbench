@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * The model class mapping to "storage" in configuration xml with following form:
- * 	<storage type="type" config="config" />
+ *     <storage type="type" config="config" />
  * 
  * @author ywang19, qzheng7
  *

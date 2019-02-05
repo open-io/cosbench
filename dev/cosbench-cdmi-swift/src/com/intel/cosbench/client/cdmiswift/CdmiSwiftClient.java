@@ -57,22 +57,22 @@ public class CdmiSwiftClient {
             response = client.execute(method);
             int statusCode = response.getStatusLine().getStatusCode();
  
-			if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
-			    return;
-			}
-			throw new SwiftException("unexpected return from server",
-			    response.getAllHeaders(), response.getStatusLine());
+            if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
+                return;
+            }
+            throw new SwiftException("unexpected return from server",
+                response.getAllHeaders(), response.getStatusLine());
         }finally {
-        	if (response != null)
-        		EntityUtils.consume(response.getEntity());
+            if (response != null)
+                EntityUtils.consume(response.getEntity());
         }
     }
 
     public void deleteContainer(String container) throws IOException,
     SwiftException {
-    	// add storage access logic here.    	
+        // add storage access logic here.        
         HttpResponse response = null;
-    	try {
+        try {
             // Create the request
             HttpDelete method = new HttpDelete(storageUrl + "/" + encodeURL(container)); 
             
@@ -101,8 +101,8 @@ public class CdmiSwiftClient {
 
     public InputStream getObjectAsStream(String container, String object)
             throws IOException, SwiftException {
-    	
-    	HttpResponse response = null;
+        
+        HttpResponse response = null;
         // Create the request
         HttpGet method = new HttpGet(storageUrl + "/" + encodeURL(container)
                 + "/" + encodeURL(object)); 
@@ -126,18 +126,18 @@ public class CdmiSwiftClient {
     
     @SuppressWarnings("unused")
     private void dumpMethod(HttpRequestBase method) {
-    	System.out.println("==== METHOD BEGIN ====");
-    	System.out.println(method.getMethod());
+        System.out.println("==== METHOD BEGIN ====");
+        System.out.println(method.getMethod());
         System.out.println(method.getURI());
         for(Header header: method.getAllHeaders()) {
-        	System.out.println(header.getName() + ": " + header.getValue());
+            System.out.println(header.getName() + ": " + header.getValue());
         }
         System.out.println("==== METHOD END ====");
     }
     
     @SuppressWarnings("unused")
     private void dumpResponse(HttpResponse response) {
-    	System.out.println("==== RESPONSE BEGIN ====");
+        System.out.println("==== RESPONSE BEGIN ====");
         Header[] hdr = response.getAllHeaders();
         System.out.println("Headers : " + hdr.length);
         for (int i = 0; i < hdr.length; i++) {
@@ -155,8 +155,8 @@ public class CdmiSwiftClient {
     
     public void storeStreamedObject(String container, String object,
             InputStream data, long length) throws IOException, CdmiSwiftClientException {
-    	// add storage access logic here.
-    	HttpPut method = null;
+        // add storage access logic here.
+        HttpPut method = null;
         // Create the request
         HttpResponse response = null;
         try {
@@ -200,7 +200,7 @@ public class CdmiSwiftClient {
   
     public void deleteObject(String container, String object)
             throws IOException, SwiftException {
-    	HttpResponse response = null;
+        HttpResponse response = null;
         try {
             // Create the request      
             HttpDelete method = new HttpDelete(storageUrl + "/" + encodeURL(container)

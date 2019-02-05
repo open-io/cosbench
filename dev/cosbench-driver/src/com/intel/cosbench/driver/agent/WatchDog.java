@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -65,8 +65,8 @@ class WatchDog extends TimerTask {
         }
         if (!cancel) {
             workerContext.getStorageApi().abort();
-        	workerContext.disposeRuntime();
-        	
+            workerContext.disposeRuntime();
+
             LOGGER.debug("work agent {} has been alerted for timeout", idx);
         } else
             LOGGER.debug("work agent {} has completed before timeout", idx);

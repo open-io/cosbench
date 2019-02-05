@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,13 +51,13 @@ public class WorkloadPageController extends AbstractController {
         WorkloadInfo info = controller.getWorkloadInfo(id);
         if (info == null)
             throw new NotFoundException();
-		if (controller.getloadArch() && info.getArchived() && info.getReport().getAllMetrics().length==0) {
-			try {
-				controller.getWorkloadLoader().loadWorkloadPageInfo(info);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+        if (controller.getloadArch() && info.getArchived() && info.getReport().getAllMetrics().length==0) {
+            try {
+                controller.getWorkloadLoader().loadWorkloadPageInfo(info);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return process(info);
     }
 

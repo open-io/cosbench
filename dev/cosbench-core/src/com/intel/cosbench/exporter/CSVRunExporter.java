@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,11 +64,11 @@ class CSVRunExporter extends AbstractRunExporter {
         buffer.setCharAt(buffer.length() - 1, '\n');
         writer.write(buffer.toString());
     }
-    
+
     private static void appendDetailedState(StringBuilder buffer, WorkloadInfo workload) {
         for(StateInfo state : workload.getStateHistory()) {
-        	String detailedState = state.getName().toLowerCase() + " @ " + DATETIME.format(state.getDate());
-        	buffer.append(detailedState).append(',');
+            String detailedState = state.getName().toLowerCase() + " @ " + DATETIME.format(state.getDate());
+            buffer.append(detailedState).append(',');
         }
     }
 

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ public class Response {
         this.code = code;
         this.succ = false;
     }
-    
+
     public Response(int code, String error) {
         this.code = code;
         this.succ = false;

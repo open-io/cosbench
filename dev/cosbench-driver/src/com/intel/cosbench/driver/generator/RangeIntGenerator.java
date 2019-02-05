@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -95,20 +95,20 @@ public class RangeIntGenerator implements IntGenerator {
             throw new IllegalArgumentException();
         this.lower = lower;
         this.upper = upper;
-  
+
     }
 
     private synchronized void init(int all) {
-    	if(cursors != null) 
-    		return;
-    	
-      	this.cursors = new AtomicInteger[all];
+        if(cursors != null) 
+            return;
 
-		for (int i = 0; i<all; i++) {
-			cursors[i] = new AtomicInteger(0);
-		}
+          this.cursors = new AtomicInteger[all];
+
+        for (int i = 0; i<all; i++) {
+            cursors[i] = new AtomicInteger(0);
+        }
     }
-    
+
     @Override
     public int next(Random random) {
         return next(random, 1, 1);
@@ -116,16 +116,16 @@ public class RangeIntGenerator implements IntGenerator {
 
     @Override
     public int next(Random random, int idx, int all) {
-    	if(cursors == null)
-    		init(all);
-    		
+        if(cursors == null)
+            init(all);
+
         int range = upper - lower + 1;
         int base = range / all;
         int extra = range % all;
         int offset = base * (idx - 1) + (extra >= idx - 1 ? idx - 1 : extra);
         int segment = base + (extra >= idx ? 1 : 0);
-        
-    	return lower + offset + cursors[idx-1].getAndIncrement() % segment;
+
+        return lower + offset + cursors[idx-1].getAndIncrement() % segment;
     }
 
     public static RangeIntGenerator parse(String pattern) {

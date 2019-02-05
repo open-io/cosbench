@@ -86,14 +86,14 @@ public class COSBControllerServiceFactory extends AbstractServiceFactory
     }
     
     private String getVersion() {
-		// TODO Auto-generated method stub
-    	String str = getName("VERSION");
-    	String str2 = getName("BUILD.no");
-    	return str+"."+str2;
-	}
+        // TODO Auto-generated method stub
+        String str = getName("VERSION");
+        String str2 = getName("BUILD.no");
+        return str+"."+str2;
+    }
     
     private String getName(String fileName){
-    	 String str = null ;
+         String str = null ;
          File myFile=new File(fileName);
          if(!myFile.exists()){ 
              System.err.println("Can't Find " + fileName);
@@ -106,10 +106,10 @@ public class COSBControllerServiceFactory extends AbstractServiceFactory
          catch (IOException e) {
              e.getStackTrace();
          }
- 		return str;
+         return str;
     }
     
-	protected String loadLogLevel() {
+    protected String loadLogLevel() {
         return config.get("controller.log_level", "INFO");
     }
 
@@ -118,7 +118,7 @@ public class COSBControllerServiceFactory extends AbstractServiceFactory
     }
 
     private String loadArchiveDir() {
-    	return config.get("controller.archive_dir", "archive");
+        return config.get("controller.archive_dir", "archive");
     }
     
     private String loadControllerName() {

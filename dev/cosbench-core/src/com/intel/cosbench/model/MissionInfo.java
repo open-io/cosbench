@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,9 +43,9 @@ public interface MissionInfo extends LifeCycle, Benchmark {
     public int getWorkerCount();
 
     public WorkerInfo[] getWorkerInfos();
-        
+
     public ErrorStatistics getErrorStatistics();
-    
+
     public List<Report> getWorkerReports();
-       
+
 }

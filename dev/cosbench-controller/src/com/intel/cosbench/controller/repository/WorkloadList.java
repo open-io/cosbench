@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import java.util.Collection;
 import com.intel.cosbench.controller.model.WorkloadContext;
 
 interface WorkloadList
-	{
+    {
 
     public int count();
 
@@ -32,6 +32,6 @@ interface WorkloadList
 
     public WorkloadContext[] add(WorkloadContext workload);
 
-	public void remove(WorkloadContext workload);
+    public void remove(WorkloadContext workload);
 
 }

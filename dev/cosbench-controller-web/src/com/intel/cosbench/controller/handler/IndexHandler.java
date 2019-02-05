@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,9 +49,9 @@ public class IndexHandler extends AbstractClientHandler {
                     .append(workload.getSubmitDate()).append('\t')
                     .append(workload.getState()).append('\t');
                     if (workload.getCurrentStage() != null) {
-                    	buffer.append(workload.getCurrentStage().getId()).append('\n');	
+                        buffer.append(workload.getCurrentStage().getId()).append('\n');    
                     } else {
-                    	buffer.append("None").append('\n');
+                        buffer.append("None").append('\n');
                     }
         }
         buffer.append("Total:").append(' ').append(workloads.length)

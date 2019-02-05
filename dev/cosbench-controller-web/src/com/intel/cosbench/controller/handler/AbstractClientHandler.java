@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,9 +67,9 @@ abstract class AbstractClientHandler implements Controller {
         } catch (ConfigException ce) {
             message = ce.getMessage();
         } catch(FileNotFoundException fnfe) {
-        	message = fnfe.getMessage();
+            message = fnfe.getMessage();
         } catch(IOException ie) {
-        	message = ie.getMessage();
+            message = ie.getMessage();
         } catch (Exception e) {
             StringWriter writer = new StringWriter();
             e.printStackTrace(new PrintWriter(writer));

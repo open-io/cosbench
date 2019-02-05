@@ -15,29 +15,29 @@ import com.intel.cosbench.model.WorkloadInfo;
 
 public abstract class AbstractWorkerExporter implements WorkerExporter {
 
-	private StageInfo stageInfo;
-	
-	public StageInfo getStageInfo() {
-		return stageInfo;
-	}
+    private StageInfo stageInfo;
 
-	public void setStageInfo(StageInfo stageInfo) {
-		this.stageInfo = stageInfo;
-	}
+    public StageInfo getStageInfo() {
+        return stageInfo;
+    }
 
-	@Override
-	public void export(Writer writer) throws IOException {
-		writeReport(writer);
-	}
-	
+    public void setStageInfo(StageInfo stageInfo) {
+        this.stageInfo = stageInfo;
+    }
+
+    @Override
+    public void export(Writer writer) throws IOException {
+        writeReport(writer);
+    }
+
     private void writeReport(Writer writer) throws IOException {
         writeHeader(writer);
         writer.flush();
         for(TaskInfo taskInfo : stageInfo.getTaskInfos()){
-        	for(Metrics metrics: taskInfo.getWrReport()){
-        		writeMetrics(writer,metrics);
-        	}
-		}
+            for(Metrics metrics: taskInfo.getWrReport()){
+                writeMetrics(writer,metrics);
+            }
+        }
         writer.flush();
     }
 

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,16 +48,16 @@ public class CloseHandler extends MissionHandler {
         Report report = info.getReport();
         List<Metrics> wrReport = new ArrayList<Metrics>();
         for(Report wReport:info.getWorkerReports()){
-        	for(Metrics metrics : wReport){
-        		wrReport.add(metrics);
-        	}
+            for(Metrics metrics : wReport){
+                wrReport.add(metrics);
+            }
         }
         response.setWrReport(wrReport);
         response.setReport(Arrays.asList(report.getAllMetrics()));
-		if (info.getState().equals(FAILED))
-			response.setState(TaskState.FAILED);
-		else
-			response.setState(TaskState.ACCOMPLISHED);
+        if (info.getState().equals(FAILED))
+            response.setState(TaskState.FAILED);
+        else
+            response.setState(TaskState.ACCOMPLISHED);
         String log = null;
         try {
             log = info.getLogManager().getLogAsString();
@@ -66,7 +66,7 @@ public class CloseHandler extends MissionHandler {
         }
         response.setErrorStatistics(info.getErrorStatistics().getErrorCodeAndNum());
         response.setDriverLog(log);
-        
+
         return response;
     }
 

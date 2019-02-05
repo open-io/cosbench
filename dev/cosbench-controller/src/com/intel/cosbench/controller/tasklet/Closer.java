@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,9 +57,9 @@ class Closer extends AbstractCommandTasklet<CloseResponse> {
         context.setLog(response.getDriverLog());
         context.setState(response.getState());
         context.setErrorStatistics(response.getErrorStatistics());
-       
+
         for(Metrics metrics : response.getWrReport()){
-        	context.getWrReport().add(metrics);
+            context.getWrReport().add(metrics);
         }
     }
 }

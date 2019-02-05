@@ -12,7 +12,7 @@ import org.springframework.web.servlet.View;
 import com.intel.cosbench.model.MissionInfo;
 
 public class DownloadLogController extends MissionPageController{
-	private static final View LOG = new LogView();
+    private static final View LOG = new LogView();
 
     private static class LogView implements View {
 
@@ -35,11 +35,11 @@ public class DownloadLogController extends MissionPageController{
 
     protected ModelAndView process(MissionInfo info) {
         String log = "";
-		try {
-			log = info.getLogManager().getLogAsString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        try {
+            log = info.getLogManager().getLogAsString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return new ModelAndView(LOG, "log", log);
     }
 

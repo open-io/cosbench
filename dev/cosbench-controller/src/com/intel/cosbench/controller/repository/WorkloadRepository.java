@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ public interface WorkloadRepository {
     public int getSize();
 
     public void saveWorkload(WorkloadContext workload);
-    
+
     public void removeWorkload(WorkloadContext workload);
 
     public WorkloadContext getWorkload(String id);
@@ -34,9 +34,9 @@ public interface WorkloadRepository {
     public WorkloadContext[] getActiveWorkloads();
 
     public WorkloadContext[] getInactiveWorkloads();
-    
+
     public WorkloadContext[] getArchivedWorkloads();
-    
+
     public int getMaxCapacity();
 
 }

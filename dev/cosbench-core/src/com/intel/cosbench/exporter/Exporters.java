@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,19 +27,19 @@ import com.intel.cosbench.model.*;
  *
  */
 public class Exporters {
-	
-	public static WorkerExporter newWorkExporter(StageInfo info){
-		AbstractWorkerExporter exporter = new CSVWorkerExporter();
-		exporter.setStageInfo(info);
-		return exporter;
-	}
-	
-	public static TaskExporter newTaskExporter(WorkloadInfo workloadInfo,DriverInfo driverInfo){
-		AbstractTaskExporter exporter = new CSVTaskExporter();
+
+    public static WorkerExporter newWorkExporter(StageInfo info){
+        AbstractWorkerExporter exporter = new CSVWorkerExporter();
+        exporter.setStageInfo(info);
+        return exporter;
+    }
+
+    public static TaskExporter newTaskExporter(WorkloadInfo workloadInfo,DriverInfo driverInfo){
+        AbstractTaskExporter exporter = new CSVTaskExporter();
         exporter.setWorkloadInfo(workloadInfo);
         exporter.setDriverInfo(driverInfo);
         return exporter;
-	}
+    }
 
     public static RunExporter newRunExporter(WorkloadInfo workload) {
         AbstractRunExporter exporter = new CSVRunExporter();
@@ -70,7 +70,7 @@ public class Exporters {
         exporter.setWorkload(workload);
         return exporter;
     }
-    
+
     public static LogExporter newScriptLogExporter(WorkloadInfo workload) {
         ScriptsLogExporter exporter = new ScriptsLogExporter();
         exporter.setWorkload(workload);
@@ -82,7 +82,7 @@ public class Exporters {
         exporter.setWorkload(workload);
         return exporter;
     }
-    
-  
+
+
 
 }

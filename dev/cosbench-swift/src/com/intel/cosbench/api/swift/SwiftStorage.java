@@ -64,7 +64,7 @@ class SwiftStorage extends NoneStorage {
         storage_url = config.get(STORAGE_URL_KEY, STORAGE_URL_DEFAULT);
         policy = config.get(POLICY_KEY, POLICY_DEFAULT);
         transfer_rate = config.getInt(TRANSFER_RATE, TRANSFER_RATE_DEFAULT);
-        		
+                
         parms.put(CONN_TIMEOUT_KEY, timeout);
         parms.put(AUTH_TOKEN_KEY, token);
         parms.put(STORAGE_URL_KEY, storage_url);
@@ -84,8 +84,8 @@ class SwiftStorage extends NoneStorage {
         super.setAuthContext(info);
         
         if(info != null) {
-        	token = info.getStr(AUTH_TOKEN_KEY);
-        	storage_url = info.getStr(STORAGE_URL_KEY);
+            token = info.getStr(AUTH_TOKEN_KEY);
+            storage_url = info.getStr(STORAGE_URL_KEY);
         }
         
         try {
@@ -94,25 +94,25 @@ class SwiftStorage extends NoneStorage {
             throw new StorageException(e);
         }
         logger.debug(new StringBuffer()
-        		.append("using auth token: ")
-        		.append(token)
-        		.append(", storage url: ")
-        		.append(storage_url)
-        		.append(", storage policy: ")
-        		.append(policy).toString());
+                .append("using auth token: ")
+                .append(token)
+                .append(", storage url: ")
+                .append(storage_url)
+                .append(", storage policy: ")
+                .append(policy).toString());
     }
 
     @Override
     public AuthContext getAuthContext() {
-		String token = client.getAuthToken();
-		String storage_url = client.getStorageURL();
-	
-		AuthContext info = new DefaultAuthContext();
-		info.put(AUTH_TOKEN_KEY, token);
-		info.put(STORAGE_URL_KEY, storage_url);
-	
-		logger.debug("returned auth token: {}, storage url: {}", token, storage_url);
-		return info;
+        String token = client.getAuthToken();
+        String storage_url = client.getStorageURL();
+    
+        AuthContext info = new DefaultAuthContext();
+        info.put(AUTH_TOKEN_KEY, token);
+        info.put(STORAGE_URL_KEY, storage_url);
+    
+        logger.debug("returned auth token: {}, storage url: {}", token, storage_url);
+        return info;
     }
 
     @Override
@@ -153,7 +153,7 @@ class SwiftStorage extends NoneStorage {
         super.getList(container, object, config);
         InputStream stream;
         try {
-        	stream = client.getTargetList(container, object);
+            stream = client.getTargetList(container, object);
         } catch (SocketTimeoutException ste) {
             throw new StorageTimeoutException(ste);
         } catch (ConnectTimeoutException cte) {

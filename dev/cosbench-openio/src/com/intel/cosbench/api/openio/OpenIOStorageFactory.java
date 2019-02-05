@@ -11,7 +11,7 @@ import com.intel.cosbench.api.storage.StorageAPIFactory;
 public class OpenIOStorageFactory implements StorageAPIFactory {
 
     private static final String OIO_STORAGE_NAME = "openio";
-    
+
     @Override
     public String getStorageName() {
         return OIO_STORAGE_NAME;

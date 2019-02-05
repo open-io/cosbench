@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,13 +24,13 @@ package com.intel.cosbench.api.context;
  * 
  */
 public class DefaultAuthContext extends AuthContext {
-	
-	public String getID(String meta) {
-    	return this.toString();
+
+    public String getID(String meta) {
+        return this.toString();
     }
-	
-	public String getID() {
-		return this.toString();
-	}
+
+    public String getID() {
+        return this.toString();
+    }
 
 }

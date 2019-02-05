@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,11 +32,11 @@ import com.intel.cosbench.model.*;
 public interface ControllerService {
 
     public String submit(XmlConfig config);
-    
-	public String resubmit(String id) throws IOException;
+
+    public String resubmit(String id) throws IOException;
 
     public void fire(String id);
-    
+
     public boolean changeOrder(String id, String neighId, boolean up);
 
     public void cancel(String id);
@@ -48,17 +48,17 @@ public interface ControllerService {
     public WorkloadInfo[] getActiveWorkloads();
 
     public WorkloadInfo[] getHistoryWorkloads();
-    
+
     public WorkloadInfo[] getArchivedWorkloads();
 
     public File getWorkloadLog(WorkloadInfo info);
 
     public File getWorkloadConfig(WorkloadInfo info);
-    
+
     public WorkloadLoader getWorkloadLoader();
-    
+
     public boolean getloadArch();
-    
+
     public void setloadArch(boolean loadArch);
 
 }

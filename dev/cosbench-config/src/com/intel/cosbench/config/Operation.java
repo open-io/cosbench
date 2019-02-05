@@ -21,7 +21,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * The model class mapping to "operation" in configuration xml with following form:
- * 	<operation type="type" ratio="ratio" division="division" config="config" />
+ *     <operation type="type" ratio="ratio" division="division" config="config" />
  * 
  * @author ywang19, qzheng7
  *
@@ -84,11 +84,11 @@ public class Operation {
     
     
     public String getId() {
-    	return id;
+        return id;
     }
     
     public void setId(String id) {
-    	this.id = id;
+        this.id = id;
     }
 
 

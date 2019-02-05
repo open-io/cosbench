@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,17 +51,17 @@ class SimpleWorkloadList implements WorkloadList {
     public WorkloadContext[] add(WorkloadContext workload) {
         toBeRemoved.clear(); // begin transaction
         list.put(workload.getId(), workload);
-        capacity = count(); // size of list	
+        capacity = count(); // size of list    
         shrinkListSize();
         WorkloadContext[] result = new WorkloadContext[toBeRemoved.size()];
         result = toBeRemoved.toArray(result);
         toBeRemoved.clear(); // end transaction
         return result;
     }
-    
+
     @Override
     public void remove(WorkloadContext workload) {
-    	list.remove(workload.getId());
+        list.remove(workload.getId());
     }
 
     private void shrinkListSize() {

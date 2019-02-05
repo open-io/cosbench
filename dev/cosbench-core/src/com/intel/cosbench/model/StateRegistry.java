@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,9 +48,9 @@ public class StateRegistry extends ListRegistry<StateInfo> {
     public void addState(String name) {
         addItem(new StateItem(name, new Date()));
     }
-    
+
     public void addState(String name, Date date) {
-    	addItem(new StateItem(name, date));
+        addItem(new StateItem(name, date));
     }
 
     public StateInfo getState(int index) {

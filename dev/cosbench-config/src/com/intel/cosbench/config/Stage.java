@@ -27,7 +27,7 @@ import com.intel.cosbench.log.Logger;
 
 /**
  * The model class mapping to "workstage" in configuration xml with following form:
- * 	<workstage name="name" />
+ *     <workstage name="name" />
  * 
  * @author ywang19, qzheng7
  *
@@ -38,7 +38,7 @@ public class Stage implements Iterable<Work> {
     private int closuredelay;
     private String trigger=null;
     private String config = "";
-	private Auth auth;
+    private Auth auth;
     private Storage storage;
     private List<Work> works;
 
@@ -58,35 +58,35 @@ public class Stage implements Iterable<Work> {
         if (StringUtils.isEmpty(name))
             throw new ConfigException("stage name cannot be empty");
         if (StringUtils.containsAny(name, ConfigConstants.DELIMITER))
-        	throw new ConfigException("stage name cannot contain delimiter '" + ConfigConstants.DELIMITER + "'");
+            throw new ConfigException("stage name cannot contain delimiter '" + ConfigConstants.DELIMITER + "'");
         this.name = name;
     }
     
-	public int getClosuredelay() {
-		return closuredelay;
-	}
-	
+    public int getClosuredelay() {
+        return closuredelay;
+    }
+    
     public String getTrigger() {
-		return trigger;
-	}
+        return trigger;
+    }
 
-	public void setTrigger(String trigger) {
-		this.trigger = trigger;
-	}
+    public void setTrigger(String trigger) {
+        this.trigger = trigger;
+    }
 
-	public String getConfig() {
-		return config;
-	}
-	
-	public void setConfig(String config) {
-		this.config = config;
-	}
+    public String getConfig() {
+        return config;
+    }
+    
+    public void setConfig(String config) {
+        this.config = config;
+    }
 
-	public void setClosuredelay(int closuredelay) {
-		if (closuredelay < 0)
-			throw new ConfigException("closure delay cannot be negative");
-		this.closuredelay = closuredelay;
-	} 
+    public void setClosuredelay(int closuredelay) {
+        if (closuredelay < 0)
+            throw new ConfigException("closure delay cannot be negative");
+        this.closuredelay = closuredelay;
+    } 
 
     public Auth getAuth() {
         return auth;
@@ -111,26 +111,26 @@ public class Stage implements Iterable<Work> {
             this.storage = storage;
     }
     
-	// method for removing nsroot config from prepare, normal and cleanup stages
-//	private Storage removeNSROOTConfig(Storage storage) {
-//		if(storage.getConfig() == null)
-//			return storage;
-//		if (!storage.getConfig().contains("nsroot"))
-//			return storage;
-//		else {
-//			Storage newStorage = new Storage();
-//			String configParams[] = storage.getConfig().split(";");
-//			StringBuffer newConfig = new StringBuffer("");
-//			for (String configParam : configParams) {
-//				if (!configParam.toLowerCase().contains("nsroot"))
-//					newConfig.append(configParam + ";");
-//			}
-//			newConfig.deleteCharAt(newConfig.length() - 1);
-//			newStorage.setType(storage.getType());
-//			newStorage.setConfig(newConfig.toString());
-//			return newStorage;
-//		}
-//	}
+    // method for removing nsroot config from prepare, normal and cleanup stages
+//    private Storage removeNSROOTConfig(Storage storage) {
+//        if(storage.getConfig() == null)
+//            return storage;
+//        if (!storage.getConfig().contains("nsroot"))
+//            return storage;
+//        else {
+//            Storage newStorage = new Storage();
+//            String configParams[] = storage.getConfig().split(";");
+//            StringBuffer newConfig = new StringBuffer("");
+//            for (String configParam : configParams) {
+//                if (!configParam.toLowerCase().contains("nsroot"))
+//                    newConfig.append(configParam + ";");
+//            }
+//            newConfig.deleteCharAt(newConfig.length() - 1);
+//            newStorage.setType(storage.getType());
+//            newStorage.setConfig(newConfig.toString());
+//            return newStorage;
+//        }
+//    }
 
     public List<Work> getWorks() {
         return works;
@@ -140,9 +140,9 @@ public class Stage implements Iterable<Work> {
         if (works == null || works.isEmpty())
             throw new ConfigException("stage must have works");
         for(Work work: works) {
-        	work.setConfig(ConfigUtils.inherit(work.getConfig(), this.config));
-        	 Logger logger = LogFactory.getSystemLogger();
-     		logger.debug("stage config: "+this.config+ "work inherit result: "+  ConfigUtils.inherit(work.getConfig(), this.config));
+            work.setConfig(ConfigUtils.inherit(work.getConfig(), this.config));
+             Logger logger = LogFactory.getSystemLogger();
+             logger.debug("stage config: "+this.config+ "work inherit result: "+  ConfigUtils.inherit(work.getConfig(), this.config));
          
         }
         this.works = works;

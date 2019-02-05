@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -76,21 +76,21 @@ class Writer extends AbstractOperator {
         String[] path = objPicker.pickObjPath(random, idx, all);
         RandomInputStream in = new RandomInputStream(size, random, isRandom,
                 hashCheck);
-		Sample sample = doWrite(in, len, path[0], path[1], config, session,
-				this);
+        Sample sample = doWrite(in, len, path[0], path[1], config, session,
+                this);
         session.getListener().onSampleCreated(sample);
         Date now = sample.getTimestamp();
-		Result result = new Result(now, getId(), getOpType(), getSampleType(),
-				getName(), sample.isSucc());
+        Result result = new Result(now, getId(), getOpType(), getSampleType(),
+                getName(), sample.isSucc());
         session.getListener().onOperationCompleted(result);
     }
-    
+
     public static  Sample doWrite(InputStream in, long length, String conName,
             String objName, Config config, Session session, Operator op) {
         if (Thread.interrupted())
             throw new AbortedException();
-        
-        XferCountingInputStream cin = new XferCountingInputStream(in);	
+
+        XferCountingInputStream cin = new XferCountingInputStream(in);    
         long start = System.nanoTime();
 
         try {
@@ -100,20 +100,20 @@ class Writer extends AbstractOperator {
             doLogErr(session.getLogger(), sie.getMessage(), sie);
             throw new AbortedException();
         } catch (Exception e) {
-        	isUnauthorizedException(e, session);
-        	errorStatisticsHandle(e, session, conName + "/" + objName);
-        	
-			return new Sample(new Date(), op.getId(), op.getOpType(),
-					op.getSampleType(), op.getName(), false);
-			
+            isUnauthorizedException(e, session);
+            errorStatisticsHandle(e, session, conName + "/" + objName);
+
+            return new Sample(new Date(), op.getId(), op.getOpType(),
+                    op.getSampleType(), op.getName(), false);
+
         } finally {
             IOUtils.closeQuietly(cin);
         }
 
         long end = System.nanoTime();
-		return new Sample(new Date(), op.getId(), op.getOpType(), op.getSampleType(),
-				op.getName(), true, (end - start) / 1000000,
-				cin.getXferTime(), cin.getByteCount());
+        return new Sample(new Date(), op.getId(), op.getOpType(), op.getSampleType(),
+                op.getName(), true, (end - start) / 1000000,
+                cin.getXferTime(), cin.getByteCount());
     }
     /*
      * public static Sample doWrite(byte[] data, String conName, String objName,

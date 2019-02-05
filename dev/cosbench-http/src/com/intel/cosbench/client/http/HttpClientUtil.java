@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -68,7 +68,7 @@ public class HttpClientUtil {
      * @return a new HTTP client
      */
     public static HttpClient createHttpClient(int timeout) {
-    	// make it support self-signed certification for https.
+        // make it support self-signed certification for https.
         HttpParams params = new BasicHttpParams();
         /* default HTTP parameters */
         DefaultHttpClient.setDefaultHttpParams(params);
@@ -77,45 +77,45 @@ public class HttpClientUtil {
         HttpConnectionParams.setConnectionTimeout(params, timeout);        
         /* user agent */
         HttpProtocolParams.setUserAgent(params, "cosbench/2.0");
-        
-	    SchemeRegistry sr = new SchemeRegistry();          
-		sr.register(new Scheme("http", 80, PlainSocketFactory.getSocketFactory()));
-		sr.register(new Scheme("https", 443, createSSLSocketFactory()));			
-		ClientConnectionManager cm = new ThreadSafeClientConnManager(sr);
-	
-	    return new DefaultHttpClient(cm, params);    	    	
+
+        SchemeRegistry sr = new SchemeRegistry();          
+        sr.register(new Scheme("http", 80, PlainSocketFactory.getSocketFactory()));
+        sr.register(new Scheme("https", 443, createSSLSocketFactory()));            
+        ClientConnectionManager cm = new ThreadSafeClientConnManager(sr);
+
+        return new DefaultHttpClient(cm, params);                
     }
-    
+
     @SuppressWarnings({ "deprecation"})
-	private static SSLSocketFactory createSSLSocketFactory()
+    private static SSLSocketFactory createSSLSocketFactory()
     {
-    	try
-    	{
-	    	SSLContext ctx = SSLContext.getInstance("TLS"); 
-	        X509TrustManager tm = new X509TrustManager() { 
-	        	@Override
-	            public void checkClientTrusted(X509Certificate[] xcs, String string) throws CertificateException { 
-	            } 
-	        	@Override
-	            public void checkServerTrusted(X509Certificate[] xcs, String string) throws CertificateException { 
-	            } 
-	
-	            public X509Certificate[] getAcceptedIssuers() { 
-	                return null; 
-	            }
-	        }; 
-	        ctx.init(null, new X509TrustManager[]{tm}, null);
-	        String[] enabled = {"SSL_RSA_WITH_NULL_MD5","SSL_RSA_WITH_NULL_SHA"};
-	        ctx.createSSLEngine().setEnabledCipherSuites(enabled);
-	        
-	        SSLSocketFactory ssf = new SSLSocketFactory(ctx); 
-	        ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);     
-	        
+        try
+        {
+            SSLContext ctx = SSLContext.getInstance("TLS"); 
+            X509TrustManager tm = new X509TrustManager() { 
+                @Override
+                public void checkClientTrusted(X509Certificate[] xcs, String string) throws CertificateException { 
+                } 
+                @Override
+                public void checkServerTrusted(X509Certificate[] xcs, String string) throws CertificateException { 
+                } 
+
+                public X509Certificate[] getAcceptedIssuers() { 
+                    return null; 
+                }
+            }; 
+            ctx.init(null, new X509TrustManager[]{tm}, null);
+            String[] enabled = {"SSL_RSA_WITH_NULL_MD5","SSL_RSA_WITH_NULL_SHA"};
+            ctx.createSSLEngine().setEnabledCipherSuites(enabled);
+
+            SSLSocketFactory ssf = new SSLSocketFactory(ctx); 
+            ssf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);     
+
             return ssf;
         } catch (Exception ex) { 
             ex.printStackTrace(); 
             return null; 
-        } 	
+        }     
     }
 
     /**
@@ -126,15 +126,15 @@ public class HttpClientUtil {
      *            the HTTP client to be disposed.
      */
     public static void disposeHttpClient(HttpClient client) {
-    	if(client != null) {
-	        ClientConnectionManager manager = client.getConnectionManager();
-	        manager.shutdown();
-	        client = null;
-    	}
+        if(client != null) {
+            ClientConnectionManager manager = client.getConnectionManager();
+            manager.shutdown();
+            client = null;
+        }
     }
 
     public static HttpGet makeHttpGet(String url) {
-    	return new HttpGet(url);
+        return new HttpGet(url);
     }
 
     public static HttpPut makeHttpPut(String url) {

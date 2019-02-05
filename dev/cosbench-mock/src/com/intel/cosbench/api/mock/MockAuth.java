@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +53,7 @@ class MockAuth extends NoneAuth {
         parms.put(OP_DELAY_KEY, delay);
 
         logger.debug("using auth config: {}", parms);
-        
+
         logger.debug("mock auth has been initialized");
     }
 

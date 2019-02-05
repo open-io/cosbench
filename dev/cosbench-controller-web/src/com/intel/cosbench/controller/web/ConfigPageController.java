@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import com.intel.cosbench.web.AbstractController;
 public class ConfigPageController extends AbstractController {
 
     @SuppressWarnings("unused")
-	private ControllerService controller;
+    private ControllerService controller;
 
     public void setController(ControllerService controller) {
         this.controller = controller;
@@ -36,8 +36,8 @@ public class ConfigPageController extends AbstractController {
     @Override
     protected ModelAndView process(HttpServletRequest req,
             HttpServletResponse res) {
-    	ModelAndView result = new ModelAndView("config");
-    	result.addObject("cInfo", controller.getControllerInfo());
+        ModelAndView result = new ModelAndView("config");
+        result.addObject("cInfo", controller.getControllerInfo());
         return result;
     }
 

@@ -24,15 +24,15 @@ public class NonCdmiClient extends BaseCdmiClient{
 //    private ArrayList<Header> custom_headers = new ArrayList<Header> ();
     
     public NonCdmiClient() {
-    	super();
+        super();
     }
 
 //    public void init(HttpClient httpClient, String uri, Map<String, String> headerKV) {
-//    	this.client = httpClient;
+//        this.client = httpClient;
 //        this.uri = uri;
 //        
 //        for(String key: headerKV.keySet())
-//        	this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));    
+//            this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));    
 //    }
 
     public void dispose() {
@@ -40,8 +40,8 @@ public class NonCdmiClient extends BaseCdmiClient{
     }
     
     private void setCustomHeaders(HttpRequest method) {
-    	for(Header header : custom_headers)
-    		method.setHeader(header);
+        for(Header header : custom_headers)
+            method.setHeader(header);
     }
 
     public void createContainer(String container) throws IOException,
@@ -56,22 +56,22 @@ public class NonCdmiClient extends BaseCdmiClient{
             response = client.execute(method, httpContext);
             int statusCode = response.getStatusLine().getStatusCode();
  
-			if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
-			    return;
-			}
-			throw new CdmiException("unexpected return from server",
-			    response.getAllHeaders(), response.getStatusLine());
+            if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
+                return;
+            }
+            throw new CdmiException("unexpected return from server",
+                response.getAllHeaders(), response.getStatusLine());
         }finally {
-        	if (response != null)
-        		EntityUtils.consume(response.getEntity());
+            if (response != null)
+                EntityUtils.consume(response.getEntity());
         }
     }
 
     public void deleteContainer(String container) throws IOException,
     CdmiException {
-    	// add storage access logic here.    	
+        // add storage access logic here.        
         HttpResponse response = null;
-    	try {
+        try {
             // Create the request
             HttpDelete method = new HttpDelete(uri + "/" + encodeURL(container) + "/"); // "http://localhost:8080/cdmi-server/TestContainer/");
 
@@ -99,8 +99,8 @@ public class NonCdmiClient extends BaseCdmiClient{
 
     public InputStream getObjectAsStream(String container, String object)
             throws IOException, CdmiException {
-    	
-    	HttpResponse response = null;
+        
+        HttpResponse response = null;
         // Create the request
         HttpGet method = new HttpGet(uri + "/" + encodeURL(container)
                 + "/" + encodeURL(object)); 
@@ -122,18 +122,18 @@ public class NonCdmiClient extends BaseCdmiClient{
     
     @SuppressWarnings("unused")
     private void dumpMethod(HttpRequestBase method) {
-    	System.out.println("==== METHOD BEGIN ====");
-    	System.out.println(method.getMethod());
+        System.out.println("==== METHOD BEGIN ====");
+        System.out.println(method.getMethod());
         System.out.println(method.getURI());
         for(Header header: method.getAllHeaders()) {
-        	System.out.println(header.getName() + ": " + header.getValue());
+            System.out.println(header.getName() + ": " + header.getValue());
         }
         System.out.println("==== METHOD END ====");
     }
     
     @SuppressWarnings("unused")
     private void dumpResponse(HttpResponse response) {
-    	System.out.println("==== RESPONSE BEGIN ====");
+        System.out.println("==== RESPONSE BEGIN ====");
         Header[] hdr = response.getAllHeaders();
         System.out.println("Headers : " + hdr.length);
         for (int i = 0; i < hdr.length; i++) {
@@ -151,8 +151,8 @@ public class NonCdmiClient extends BaseCdmiClient{
     
     public void storeStreamedObject(String container, String object,
             InputStream data, long length) throws IOException, CdmiClientException {
-    	// add storage access logic here.
-    	HttpPut method = null;
+        // add storage access logic here.
+        HttpPut method = null;
         // Create the request
         HttpResponse response = null;
         try {
@@ -192,7 +192,7 @@ public class NonCdmiClient extends BaseCdmiClient{
   
     public void deleteObject(String container, String object)
             throws IOException, CdmiException {
-    	HttpResponse response = null;
+        HttpResponse response = null;
         try {
             // Create the request      
             HttpDelete method = new HttpDelete(uri + "/" + encodeURL(container)

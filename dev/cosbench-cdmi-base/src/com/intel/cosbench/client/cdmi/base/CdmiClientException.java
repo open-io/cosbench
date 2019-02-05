@@ -10,7 +10,7 @@ public class CdmiClientException extends HttpResponseException {
     private StatusLine httpStatusLine;
 
     public CdmiClientException(int code, String message) {
-    	super(code, message);
+        super(code, message);
     }
     
     public CdmiClientException(int code, String message, Header[] httpHeaders,

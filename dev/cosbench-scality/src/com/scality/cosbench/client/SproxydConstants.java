@@ -17,30 +17,30 @@ package com.scality.cosbench.client;
 
 public interface SproxydConstants {
 
-	String LOGGING_KEY = "logging";
+    String LOGGING_KEY = "logging";
 
-	Boolean LOGGING_DEFAULT = Boolean.FALSE;
+    Boolean LOGGING_DEFAULT = Boolean.FALSE;
 
-	// --------------------------------------------------------------------------
-	// CONNECTION
-	// --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+    // CONNECTION
+    // --------------------------------------------------------------------------
 
-	String CONN_TIMEOUT_KEY = "timeout";
-	int CONN_TIMEOUT_DEFAULT = 30000;
+    String CONN_TIMEOUT_KEY = "timeout";
+    int CONN_TIMEOUT_DEFAULT = 30000;
 
-	String BASE_PATH_KEY = "base_path";
-	String BASE_PATH_DEFAULT = "/proxy/chord";
+    String BASE_PATH_KEY = "base_path";
+    String BASE_PATH_DEFAULT = "/proxy/chord";
 
-	String HOSTS_KEY = "hosts";
-	String HOSTS_DEFAULT = "127.0.0.1";
+    String HOSTS_KEY = "hosts";
+    String HOSTS_DEFAULT = "127.0.0.1";
 
-	String PORT_KEY = "port";
-	int PORT_DEFAULT = 81;
+    String PORT_KEY = "port";
+    int PORT_DEFAULT = 81;
 
-	String POOL_SIZE_KEY = "pool_size";
-	/**
-	 * MaxTotal,MaxPerRoute for the HTTP connection manager pool
-	 */
-	String POOL_SIZE_DEFAULT = "60,10";
+    String POOL_SIZE_KEY = "pool_size";
+    /**
+     * MaxTotal,MaxPerRoute for the HTTP connection manager pool
+     */
+    String POOL_SIZE_DEFAULT = "60,10";
 
 }

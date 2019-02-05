@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,13 +34,13 @@ public class DriverContext implements DriverInfo, MapRegistry.Item {
     private String name;
     private String url;
     private boolean aliveState;
- 
-	// pIDMap<scriptName, pid>
-	private Map<String, String> pidMap = new HashMap<String, String>();
-	// logMap<'wId'+'sId', ScriptLog>
-	private Map<String, String> scriptsLog = new HashMap<String, String>();
-	
-	public DriverContext() {
+
+    // pIDMap<scriptName, pid>
+    private Map<String, String> pidMap = new HashMap<String, String>();
+    // logMap<'wId'+'sId', ScriptLog>
+    private Map<String, String> scriptsLog = new HashMap<String, String>();
+
+    public DriverContext() {
         /* empty */
     }
 
@@ -69,39 +69,39 @@ public class DriverContext implements DriverInfo, MapRegistry.Item {
 
     @Override
     public boolean getAliveState(){
-    	return aliveState;
+        return aliveState;
     }
 
-	public String getPidMapValue(String scriptName) {
-		String pid = pidMap.remove(scriptName);		
-		return (pid == null) ? "0" : pid;
-	}
+    public String getPidMapValue(String scriptName) {
+        String pid = pidMap.remove(scriptName);        
+        return (pid == null) ? "0" : pid;
+    }
 
-	public void putPidMap(String scriptName, String pid) {
-		if (pid == null)
-			pidMap.put(scriptName, "0");
-		pidMap.put(scriptName, pid);
-	}
+    public void putPidMap(String scriptName, String pid) {
+        if (pid == null)
+            pidMap.put(scriptName, "0");
+        pidMap.put(scriptName, pid);
+    }
 
-	@Override
-	public Map<String, String> getLogMap() {
-		return scriptsLog;
-	}
+    @Override
+    public Map<String, String> getLogMap() {
+        return scriptsLog;
+    }
 
-	public void putLogMap(String wsId, String ScriptLog) {
-		if (wsId == null || wsId.isEmpty())
-			return;
-		scriptsLog.put(wsId, ScriptLog);
-	}
-	
-	public String getLogMapValue(String wsId) {
-		return scriptsLog.remove(wsId);
-	}
+    public void putLogMap(String wsId, String ScriptLog) {
+        if (wsId == null || wsId.isEmpty())
+            return;
+        scriptsLog.put(wsId, ScriptLog);
+    }
 
-	@Override
-	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
+    public String getLogMapValue(String wsId) {
+        return scriptsLog.remove(wsId);
+    }
+
+    @Override
+    public String getVersion() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

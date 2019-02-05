@@ -25,8 +25,8 @@ import com.intel.cosbench.config.common.ConfigUtils;
 
 /**
  * The model class mapping to "work" in configuration xml with following form:
- * 	<work type="type" workers="workers" division="division" 
- * 		rampup="rampup" rampdown="rampdown" runtime="runtime" config="config" ... />
+ *     <work type="type" workers="workers" division="division" 
+ *         rampup="rampup" rampdown="rampdown" runtime="runtime" config="config" ... />
  * 
  * @author ywang19, qzheng7
  *
@@ -220,12 +220,12 @@ public class Work implements Iterable<Operation> {
     }    
 
     public List<String> getOperationIDs() {
-		List<String> opIds = new ArrayList<String>();
-		for (Operation operation : operations) {
-			opIds.add(operation.getId());
-		}
-		return opIds;
-	}
+        List<String> opIds = new ArrayList<String>();
+        for (Operation operation : operations) {
+            opIds.add(operation.getId());
+        }
+        return opIds;
+    }
 
 
     public List<Operation> getOperations() {
@@ -236,7 +236,7 @@ public class Work implements Iterable<Operation> {
         if (operations == null || operations.isEmpty())
             throw new ConfigException("a work must have opertations");
         for(Operation op: operations) {
-        	op.setConfig(ConfigUtils.inherit(op.getConfig(), this.config));
+            op.setConfig(ConfigUtils.inherit(op.getConfig(), this.config));
         }
         this.operations = operations;
     }
@@ -327,26 +327,26 @@ public class Work implements Iterable<Operation> {
         setOperations(Collections.singletonList(op));
     }
     
-	public void toDelayWork() {
-		if (name == null)
-			name = "delay";
-		setDivision("none");
-		setRuntime(0);
-		setDefaultAfr(0);
-		setTotalBytes(0);
-		setWorkers(1);
-		setTotalOps(getWorkers());
-		Operation op = new Operation();
-		op.setType("delay");
-		op.setRatio(100);
-		op.setConfig("");
-		setOperations(Collections.singletonList(op));
-	} 
-	
-	private void setDefaultAfr(int def) {
-		if (afr < 0)
-			setAfr(def);
-	}
+    public void toDelayWork() {
+        if (name == null)
+            name = "delay";
+        setDivision("none");
+        setRuntime(0);
+        setDefaultAfr(0);
+        setTotalBytes(0);
+        setWorkers(1);
+        setTotalOps(getWorkers());
+        Operation op = new Operation();
+        op.setType("delay");
+        op.setRatio(100);
+        op.setConfig("");
+        setOperations(Collections.singletonList(op));
+    } 
+    
+    private void setDefaultAfr(int def) {
+        if (afr < 0)
+            setAfr(def);
+    }
 
     public void validate() {
         if (type.equals("prepare"))
@@ -357,10 +357,10 @@ public class Work implements Iterable<Operation> {
             toInitWork();
         else if (type.equals("dispose"))
             toDisposeWork();
-		else if (type.equals("delay"))
-			toDelayWork(); 
-		else 
-			setDefaultAfr(200000);
+        else if (type.equals("delay"))
+            toDelayWork(); 
+        else 
+            setDefaultAfr(200000);
         setName(getName());
         setWorkers(getWorkers());
         if (runtime == 0 && totalOps == 0 && totalBytes == 0)
@@ -372,9 +372,9 @@ public class Work implements Iterable<Operation> {
         storage.validate();
         List<Operation> tempOpList = new ArrayList<Operation>();
         for (Operation op: operations) {
-        	if(op.getRatio() > 0) {
-        		tempOpList.add(op);
-        	}
+            if(op.getRatio() > 0) {
+                tempOpList.add(op);
+            }
         }
         operations = tempOpList;
         setOperations(getOperations());

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,7 +100,7 @@ public interface StorageAPI {
      *            - the configuration used for this operation.
      */
     public InputStream getList(String container, String object, Config config);
-    
+
     /**
      * Creates a new container.
      * 
@@ -155,12 +155,12 @@ public interface StorageAPI {
 //    
 //    public void createMetadata(String container, String object, Map<String,
 //     String> map, Config config);
-    
+
     /**
      * set the current authorization validity 
      * @param auth
      *          - if the current authorization valid or not
-     */				
+     */                
     public void setAuthFlag(Boolean auth);
     /**
      * check if the current authorization valid 

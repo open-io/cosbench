@@ -18,7 +18,7 @@ public class CDMIStorage extends NoneStorage {
 
     private CdmiSwiftClient client;
     private int timeout;
-    
+
     private String rootPath;
     private String storageUrl;
 
@@ -26,34 +26,34 @@ public class CDMIStorage extends NoneStorage {
     public void init(Config config, Logger logger) {
         super.init(config, logger);
         initParms(config);
-        
+
         HttpClient httpClient = HttpClientUtil.createHttpClient(timeout);
         client = new CdmiSwiftClient(httpClient);
     }
 
     private void initParms(Config config) {
-    	rootPath = config.get(ROOT_PATH_KEY, ROOT_PATH_DEFAULT);
-    	storageUrl = config.get(STORAGE_URL_KEY, STORAGE_URL_DEFAULT);
+        rootPath = config.get(ROOT_PATH_KEY, ROOT_PATH_DEFAULT);
+        storageUrl = config.get(STORAGE_URL_KEY, STORAGE_URL_DEFAULT);
         timeout = config.getInt(TIMEOUT_KEY, TIMEOUT_DEFAULT);
-        
+
         parms.put(ROOT_PATH_KEY, rootPath);
         parms.put(STORAGE_URL_KEY, storageUrl);
-    	parms.put(TIMEOUT_KEY, timeout);
+        parms.put(TIMEOUT_KEY, timeout);
     }
-    
+
 //    @Override
 //    public void setAuthContext(AuthContext info) {
 //        super.setAuthContext(info);
 //        try {
-//        	String authToken = info.getStr(AUTH_TOKEN_KEY);
+//            String authToken = info.getStr(AUTH_TOKEN_KEY);
 //            String tempUrl = info.getStr(STORAGE_URL_KEY);
 //            String parts[] = tempUrl.split("/");
 //            if(parts.length > 2)
 //            {
-//	            parts[parts.length-2] = nsroot;
-//	            tempUrl = "";
-//	            for(int i=0; i<parts.length; i++)
-//	            	tempUrl += parts[i] + "/";
+//                parts[parts.length-2] = nsroot;
+//                tempUrl = "";
+//                for(int i=0; i<parts.length; i++)
+//                    tempUrl += parts[i] + "/";
 //            }
 //            
 //            logger.debug("auth token=" + authToken + ", storage url=" + tempUrl);
@@ -67,9 +67,9 @@ public class CDMIStorage extends NoneStorage {
     public void setAuthContext(AuthContext info) {
         super.setAuthContext(info);
         try {
-        	String authToken = info.getStr(AUTH_TOKEN_KEY);
+            String authToken = info.getStr(AUTH_TOKEN_KEY);
             String storageUrl = info.getStr(STORAGE_URL_KEY);
-            
+
             logger.debug("auth token=" + authToken + ", storage url=" + storageUrl);
             client.init(authToken, storageUrl);
         } catch (Exception e) {

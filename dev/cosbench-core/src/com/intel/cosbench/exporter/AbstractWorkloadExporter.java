@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,17 +46,17 @@ abstract class AbstractWorkloadExporter implements WorkloadExporter {
         writeHeader(writer);
         writer.flush();
         for (StageInfo stage : workload.getStageInfos()) {
-        	for (Metrics metrics : stage.getReport())
+            for (Metrics metrics : stage.getReport())
                 writeMetrics(writer, metrics, stage);
-			if (stage.getReport().getSize() == 0)
-				writeMetrics(writer, stage);
+            if (stage.getReport().getSize() == 0)
+                writeMetrics(writer, stage);
         }
         writer.flush();
     }
 
     protected abstract void writeMetrics(Writer writer, StageInfo stage) throws IOException;
 
-	protected abstract void writeHeader(Writer writer) throws IOException;
+    protected abstract void writeHeader(Writer writer) throws IOException;
 
     protected abstract void writeMetrics(Writer writer, Metrics metrics, StageInfo stage)
             throws IOException;

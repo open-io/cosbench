@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -218,15 +218,15 @@ public class KeystoneResponse {
                     this.publicURL = publicURL;
                 }
 
-				public String getRegion() {
-					return region;
-				}
+                public String getRegion() {
+                    return region;
+                }
 
-				public void setRegion(String region) {
-					this.region = region;
-				}
-                
-                
+                public void setRegion(String region) {
+                    this.region = region;
+                }
+
+
 
             }
 

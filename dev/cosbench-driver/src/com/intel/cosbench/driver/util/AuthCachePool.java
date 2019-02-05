@@ -10,15 +10,15 @@ import com.intel.cosbench.api.context.AuthContext;
  * 
  */
 public class AuthCachePool extends ConcurrentHashMap<String, AuthContext>{
-	private static final long serialVersionUID = -8592973423618299263L;
-	private static AuthCachePool INSTANCE = new AuthCachePool();
-	
-	private AuthCachePool() {
-		
-	}
-	
-	public static AuthCachePool getInstance() {
-		return INSTANCE;
-	}
+    private static final long serialVersionUID = -8592973423618299263L;
+    private static AuthCachePool INSTANCE = new AuthCachePool();
+
+    private AuthCachePool() {
+
+    }
+
+    public static AuthCachePool getInstance() {
+        return INSTANCE;
+    }
 
 }

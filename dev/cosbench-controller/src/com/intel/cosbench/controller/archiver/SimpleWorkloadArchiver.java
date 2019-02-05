@@ -52,19 +52,19 @@ public class SimpleWorkloadArchiver implements WorkloadArchiver {
 //    }
 
     public SimpleWorkloadArchiver() {
-    	this("archive");
+        this("archive");
     }
     
     public SimpleWorkloadArchiver(final String archive) {
-    	ARCHIVE_DIR = new File(archive);
-    	
+        ARCHIVE_DIR = new File(archive);
+        
         if (!ARCHIVE_DIR.exists())
-        	ARCHIVE_DIR.mkdirs();
+            ARCHIVE_DIR.mkdirs();
         String path = ARCHIVE_DIR.getAbsolutePath();
         LOGGER.info("using {} for storing workload archives", path);
     }
 
-	@Override
+    @Override
     public synchronized void archive(WorkloadInfo info) {
         File runDir = new File(ARCHIVE_DIR, getRunDirName(info));
         try {
@@ -74,10 +74,10 @@ public class SimpleWorkloadArchiver implements WorkloadArchiver {
             return;
         }
         try {
-			updateCount(info);
-		} catch (Exception e) {
-			LOGGER.error("fail to update count", e);
-		}
+            updateCount(info);
+        } catch (Exception e) {
+            LOGGER.error("fail to update count", e);
+        }
         String id = info.getId();
         LOGGER.info("workload {} has been successfully archived", id);
     }
@@ -98,37 +98,37 @@ public class SimpleWorkloadArchiver implements WorkloadArchiver {
     }
     
     private void exportWorkerInfo(WorkloadInfo info,File parent)throws IOException{
-    	for(StageInfo sInfo :info.getStageInfos()){
-    		File file = new File(parent,getStageFileName(sInfo) +"-worker"+ ".csv");
-    		Writer writer = new BufferedWriter(new FileWriter(file));
-    		WorkerExporter exporter = Exporters.newWorkExporter(sInfo);
-	    	 try {
-	             exporter.export(writer);
-	         } finally {
-	             writer.close();
-	         }
-	         String name = sInfo.getId()+"worker";
-	         String path = file.getAbsolutePath();
-	         String msg = "perf details of {} has been exported to {}";
-	         LOGGER.debug(msg, name, path);
-    	}
+        for(StageInfo sInfo :info.getStageInfos()){
+            File file = new File(parent,getStageFileName(sInfo) +"-worker"+ ".csv");
+            Writer writer = new BufferedWriter(new FileWriter(file));
+            WorkerExporter exporter = Exporters.newWorkExporter(sInfo);
+             try {
+                 exporter.export(writer);
+             } finally {
+                 writer.close();
+             }
+             String name = sInfo.getId()+"worker";
+             String path = file.getAbsolutePath();
+             String msg = "perf details of {} has been exported to {}";
+             LOGGER.debug(msg, name, path);
+        }
     }
 
     private void exportTaskInfo(WorkloadInfo info,File parent)throws IOException{
-		for(DriverInfo dInfo:info.getDriverInfos()){
-			File file = new File(parent, dInfo.getName() + ".csv");
-	    	Writer writer = new BufferedWriter(new FileWriter(file));
-	    	TaskExporter exporter = Exporters.newTaskExporter(info,dInfo);
-	    	 try {
-	             exporter.export(writer);
-	         } finally {
-	             writer.close();
-	         }
-	         String name = dInfo.getName();
-	         String path = file.getAbsolutePath();
-	         String msg = "perf details of {} has been exported to {}";
-	         LOGGER.debug(msg, name, path);
-		}	    
+        for(DriverInfo dInfo:info.getDriverInfos()){
+            File file = new File(parent, dInfo.getName() + ".csv");
+            Writer writer = new BufferedWriter(new FileWriter(file));
+            TaskExporter exporter = Exporters.newTaskExporter(info,dInfo);
+             try {
+                 exporter.export(writer);
+             } finally {
+                 writer.close();
+             }
+             String name = dInfo.getName();
+             String path = file.getAbsolutePath();
+             String msg = "perf details of {} has been exported to {}";
+             LOGGER.debug(msg, name, path);
+        }        
     }
     
     
@@ -303,10 +303,10 @@ public class SimpleWorkloadArchiver implements WorkloadArchiver {
         String workloadId = null;
         workloadId = info.getId();
         try {
-    		count = parseID(workloadId);			
-		} catch (Exception e) {
-			LOGGER.error("cannot parse workloadId", e);
-		}
+            count = parseID(workloadId);            
+        } catch (Exception e) {
+            LOGGER.error("cannot parse workloadId", e);
+        }
         
         Writer writer = new BufferedWriter(new FileWriter(file));
         try {
@@ -343,14 +343,14 @@ public class SimpleWorkloadArchiver implements WorkloadArchiver {
         return count;
     }
     
-	private int parseID(String workloadID) throws NumberFormatException, IndexOutOfBoundsException {
-		int count = 0;
-		try {
-			count = Integer.parseInt(workloadID.substring(1)); 
-		} catch (Exception e) {
-			LOGGER.error("cannot extract count from workloadId", e);
-		}
-		return count;
-	}
+    private int parseID(String workloadID) throws NumberFormatException, IndexOutOfBoundsException {
+        int count = 0;
+        try {
+            count = Integer.parseInt(workloadID.substring(1)); 
+        } catch (Exception e) {
+            LOGGER.error("cannot extract count from workloadId", e);
+        }
+        return count;
+    }
 
 }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,15 +35,15 @@ public class Result {
     private String opName;
     private String opId;
 
-	public Result(Date timestamp, String opId, String opType,
-			String sampleType, String opName, boolean succ) {
-		this.timestamp = timestamp;
-		this.succ = succ;
-		this.opType = opType;
-		this.sampleType = sampleType;
-		this.opName = opName;
-		this.opId = opId;
-	}
+    public Result(Date timestamp, String opId, String opType,
+            String sampleType, String opName, boolean succ) {
+        this.timestamp = timestamp;
+        this.succ = succ;
+        this.opType = opType;
+        this.sampleType = sampleType;
+        this.opName = opName;
+        this.opId = opId;
+    }
 
     public Date getTimestamp() {
         return timestamp;
@@ -76,13 +76,13 @@ public class Result {
     public void setSampleType(String sampleType) {
         this.sampleType = sampleType;
     }
-    
+
     public String getOpName(){
-    	return opName;
+        return opName;
     }
-    
+
     public String getOpId() {
-    	return opId;
+        return opId;
     }
 
 }

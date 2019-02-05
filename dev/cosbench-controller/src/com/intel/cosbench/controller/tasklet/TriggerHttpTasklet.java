@@ -24,7 +24,7 @@ import com.intel.cosbench.protocol.TriggerResponse;
 import com.intel.cosbench.service.UnexpectedException;
 
 abstract class TriggerHttpTasklet implements Tasklet{
-	private transient HttpClient httpClient;
+    private transient HttpClient httpClient;
     private transient ObjectMapper mapper;
     protected DriverContext driver;
     protected String trigger = null;
@@ -32,21 +32,21 @@ abstract class TriggerHttpTasklet implements Tasklet{
     protected String scriptName = null;
     protected String wsId = null;
 
-	Class<TriggerResponse> clazz = TriggerResponse.class;
-    
+    Class<TriggerResponse> clazz = TriggerResponse.class;
+
     private static final int TIMEOUT = 300 * 1000;
     protected static final Logger LOGGER = LogFactory.getSystemLogger();
-    
+
     protected abstract void execute();
     protected abstract void handleResponse(TriggerResponse response);
-    
+
     public TriggerHttpTasklet(DriverContext driver, String trigger, boolean option, String wsId) {
-		this.driver = driver;
-		this.trigger = trigger;
-		this.isEnable = option;
-		this.wsId = wsId;		
-	}
-    
+        this.driver = driver;
+        this.trigger = trigger;
+        this.isEnable = option;
+        this.wsId = wsId;        
+    }
+
     protected void initObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         DeserializationConfig config = mapper.copyDeserializationConfig();
@@ -117,13 +117,13 @@ abstract class TriggerHttpTasklet implements Tasklet{
             LOGGER.debug("[ << ] - {} [body-omitted]", status);
         return body; // the response body
     }
-    
+
     protected void issueCommand(String command, String content) {
         TriggerResponse response = null;
         String body = issueHttpRequest(command, content);
         if (body == null) {
-        	LOGGER.error("TriggerResponse body is null");
-        	return;
+            LOGGER.error("TriggerResponse body is null");
+            return;
         }
         try {
             response = this.mapper.readValue(body, clazz);
@@ -138,11 +138,11 @@ abstract class TriggerHttpTasklet implements Tasklet{
         }
         handleResponse(response);
     }
-    
+
     @Override
     public Tasklet call() {
         try {
-        	execute();
+            execute();
         } catch (Exception e) {
             LOGGER.error("unexpected exception of trigger", e);
         }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -80,7 +80,7 @@ class UniformIntGenerator implements IntGenerator {
     }
 
     public static int getMAXupper () {
-		return MAXupper;
-	}
+        return MAXupper;
+    }
 
 }

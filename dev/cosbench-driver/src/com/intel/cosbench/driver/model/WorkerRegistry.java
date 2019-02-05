@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,6 +30,6 @@ public class WorkerRegistry extends ListRegistry<WorkerContext> {
     }
 
     public WorkerContext getWorkerByIndex(int index) {
-	return getItem(index);
+    return getItem(index);
     }
 }

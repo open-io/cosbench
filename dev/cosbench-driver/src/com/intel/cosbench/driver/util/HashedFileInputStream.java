@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,7 +53,7 @@ public class HashedFileInputStream extends NullInputStream {
         this.size = size;
         this.hashLen = this.util.getHashLen();
     }
-    
+
     @Override
     protected int processByte() {
         throw new UnsupportedOperationException("do not read byte by byte");

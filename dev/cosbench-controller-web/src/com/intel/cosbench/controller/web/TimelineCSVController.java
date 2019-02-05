@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,8 +49,8 @@ public class TimelineCSVController extends StagePageController {
 
     @Override
     protected ModelAndView process(WorkloadInfo wInfo, StageInfo sInfo) {
-    	ModelAndView result = new ModelAndView(CSV, "sInfo", sInfo);
-    	result.addObject("cInfo", controller.getControllerInfo());
+        ModelAndView result = new ModelAndView(CSV, "sInfo", sInfo);
+        result.addObject("cInfo", controller.getControllerInfo());
         return result;
     }
 

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,13 +77,13 @@ class SwiftAuth extends NoneAuth {
     }
     @Override
     public void init() {
-    	super.init();
-    	logger.debug("a second init of client using auth config: {}",parms);
-    	HttpClient httpClient = HttpClientUtil.createHttpClient(timeout);
+        super.init();
+        logger.debug("a second init of client using auth config: {}",parms);
+        HttpClient httpClient = HttpClientUtil.createHttpClient(timeout);
         client = new SwiftAuthClient(httpClient, url, username, password);
         logger.debug("a second swauth client has been initialized");
     }
-    
+
 
     @Override
     public void dispose() {
@@ -94,11 +94,11 @@ class SwiftAuth extends NoneAuth {
     @Override
     public AuthContext login() {
         super.login();
-//    	AuthContext authContext = new AuthContext();
-//    	SwiftTokenCache tokenCache = SwiftTokenCacheImpl.getSwiftTokenCache(client);
-//    	authContext.put("token",tokenCache.getToken());
+//        AuthContext authContext = new AuthContext();
+//        SwiftTokenCache tokenCache = SwiftTokenCacheImpl.getSwiftTokenCache(client);
+//        authContext.put("token",tokenCache.getToken());
 //        authContext.put("storage_url", tokenCache.getStorageURL());
-//    	return authContext;
+//        return authContext;
         try {
             client.login();
         } catch (SwiftAuthClientException se) {
@@ -108,10 +108,10 @@ class SwiftAuth extends NoneAuth {
         }
         return createContext();
     }
-    
+
     private AuthContext createContext() {
         SwiftAuthContext context = new SwiftAuthContext(url, username, password, client.getAuthToken(), client.getStorageURL());
-        
+
         return context;
     }
 }

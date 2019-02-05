@@ -12,8 +12,8 @@ import com.intel.cosbench.bench.TaskReport;
 
 public class CSVWorkerExporter extends AbstractWorkerExporter{
 
-	@Override
-	protected void writeHeader(Writer writer) throws IOException {
+    @Override
+    protected void writeHeader(Writer writer) throws IOException {
         StringBuilder buffer = new StringBuilder();
         char[] cs = new char[8];
         buffer.append("Op-Type").append(',');
@@ -28,8 +28,8 @@ public class CSVWorkerExporter extends AbstractWorkerExporter{
         writer.write(buffer.toString());
     }
 
-	@Override
-	  protected void writeMetrics(Writer writer,Metrics metrics)throws IOException {
+    @Override
+      protected void writeMetrics(Writer writer,Metrics metrics)throws IOException {
         StringBuilder buffer = new StringBuilder();
         /*Operation Type*/
         buffer.append(metrics.getOpType()).append(',');
@@ -46,7 +46,7 @@ public class CSVWorkerExporter extends AbstractWorkerExporter{
         else
             buffer.append("N/A");
         buffer.append(',');
-        
+
         /* Transfer Time */
         double pt = metrics.getAvgResTime() - metrics.getAvgXferTime();
         if (pt > 0)
@@ -54,7 +54,7 @@ public class CSVWorkerExporter extends AbstractWorkerExporter{
         else
             buffer.append("N/A");
         buffer.append(',');
-        
+
         /* Throughput */
         buffer.append(NUM.format(metrics.getThroughput())).append(',');
         /* Bandwidth */
@@ -68,5 +68,5 @@ public class CSVWorkerExporter extends AbstractWorkerExporter{
         buffer.append('\n');
         writer.write(buffer.toString());
     }
-	
+
 }

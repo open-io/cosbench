@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,27 +29,27 @@ import com.intel.cosbench.model.WorkloadInfo;
  */
 abstract class AbstractWorkloadFileLoader implements WorkloadFileLoader{
 
-	protected BufferedReader reader;
-	protected WorkloadInfo workloadContext;
-	
-	public AbstractWorkloadFileLoader() {
-		/* empty */
-	}
-	
-	@Override
-	public void init(BufferedReader reader, WorkloadInfo workloadContext) throws IOException{
-		this.reader = reader;
-		this.workloadContext = workloadContext;
-		readHeader();
-	}
+    protected BufferedReader reader;
+    protected WorkloadInfo workloadContext;
 
-	@Override
-	public void load() throws IOException{
-		readWorkload();
-	}
-	
-	protected abstract void readHeader() throws IOException;
+    public AbstractWorkloadFileLoader() {
+        /* empty */
+    }
 
-	protected abstract void readWorkload() throws IOException;
+    @Override
+    public void init(BufferedReader reader, WorkloadInfo workloadContext) throws IOException{
+        this.reader = reader;
+        this.workloadContext = workloadContext;
+        readHeader();
+    }
+
+    @Override
+    public void load() throws IOException{
+        readWorkload();
+    }
+
+    protected abstract void readHeader() throws IOException;
+
+    protected abstract void readWorkload() throws IOException;
 
 }

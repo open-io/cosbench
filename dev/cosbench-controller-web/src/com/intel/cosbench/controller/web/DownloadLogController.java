@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,8 +57,8 @@ public class DownloadLogController extends WorkloadPageController {
 
     protected ModelAndView process(WorkloadInfo info) {
         File file = controller.getWorkloadLog(info);
-    	ModelAndView result = new ModelAndView(LOG, "log", file);
-    	result.addObject("cInfo", controller.getControllerInfo());
+        ModelAndView result = new ModelAndView(LOG, "log", file);
+        result.addObject("cInfo", controller.getControllerInfo());
         return result;
     }
 

@@ -87,19 +87,19 @@ public class Metrics implements Item, Cloneable {
     }
     
     public String getOpName(){
-    	return opName;
+        return opName;
     }
     
     public void setOpName(String opName){
-    	this.opName = opName;
+        this.opName = opName;
     }
     
     public String getOpId() {
-    	return opId;
+        return opId;
     }
     
     public void setOpId(String opId) {
-    	this.opId = opId;
+        this.opId = opId;
     }
 
     public int getSampleCount() {
@@ -143,11 +143,11 @@ public class Metrics implements Item, Cloneable {
     }
 
     public double getAvgXferTime() {
-    	return avgXferTime;
+        return avgXferTime;
     }
 
     public void setAvgXferTime(double avgXferTime) {
-    	this.avgXferTime = avgXferTime;
+        this.avgXferTime = avgXferTime;
     }
     
     public double getThroughput() {
@@ -175,11 +175,11 @@ public class Metrics implements Item, Cloneable {
     }
     
     public void setRatio(double ratio) {
-    	this.ratio = ratio;
+        this.ratio = ratio;
     }
     
     public double getRatio() {
-    	return ratio;
+        return ratio;
     }
 
     @Override
@@ -191,9 +191,9 @@ public class Metrics implements Item, Cloneable {
         return this;
     }
 
-	public static String getMetricsType(String opId, String opType,
-			String sampleType, String opName) {
-		return opId + "." + opType + "." + sampleType + "." + opName;
+    public static String getMetricsType(String opId, String opType,
+            String sampleType, String opName) {
+        return opId + "." + opType + "." + sampleType + "." + opName;
     }
 
     public static Metrics newMetrics(String type) {
@@ -213,13 +213,13 @@ public class Metrics implements Item, Cloneable {
         long rtSum = mark.getRtSum();
         long xtSum = mark.getXtSum();
         long bytes = mark.getByteCount();
-		String type = getMetricsType(mark.getOpId(), mark.getOpType(),
-				mark.getSampleType(), mark.getOpName());
+        String type = getMetricsType(mark.getOpId(), mark.getOpType(),
+                mark.getSampleType(), mark.getOpName());
         Metrics metrics = newMetrics(type);
         metrics.setSampleCount(sps);
         metrics.setTotalSampleCount(tsps);
         metrics.setRatio(metrics.getTotalSampleCount() > 0 ? (double) metrics
-				.getSampleCount() / metrics.getTotalSampleCount() : 0D);
+                .getSampleCount() / metrics.getTotalSampleCount() : 0D);
         metrics.setByteCount(bytes);
         metrics.setWorkerCount(1);
         metrics.setAvgResTime(rtSum > 0 ? ((double) rtSum) / sps : 0);

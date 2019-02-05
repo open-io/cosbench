@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +48,7 @@ class NumericNameGenerator implements NameGenerator {
         int value = generator.next(random);
         return StringUtils.join(new Object[] { prefix, value, suffix });
     }
-    
+
     @Override
     public int nextKey(Random random) {
         return generator.next(random);

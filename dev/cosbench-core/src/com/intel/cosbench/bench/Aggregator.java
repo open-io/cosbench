@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,8 +67,8 @@ public class Aggregator {
         metrics.setAvgResTime(getAvgResTime());
         metrics.setAvgXferTime(getAvgXferTime());
         metrics.setLatency(getLatency());
-		metrics.setRatio(metrics.getTotalSampleCount() > 0 ? (double) metrics
-				.getSampleCount() / metrics.getTotalSampleCount() : 0D);
+        metrics.setRatio(metrics.getTotalSampleCount() > 0 ? (double) metrics
+                .getSampleCount() / metrics.getTotalSampleCount() : 0D);
         return metrics;
     }
 
@@ -96,13 +96,13 @@ public class Aggregator {
     }
 
     private double getAvgXferTime() {
-		if (sampleCount == 0)
-			return 0D;
-		double sum = 0D;
-		for (Metrics metrics : children)
-			sum += metrics.getAvgXferTime() * metrics.getSampleCount();
-		return sum / sampleCount;
-	}
+        if (sampleCount == 0)
+            return 0D;
+        double sum = 0D;
+        for (Metrics metrics : children)
+            sum += metrics.getAvgXferTime() * metrics.getSampleCount();
+        return sum / sampleCount;
+    }
 
     private Histogram getLatency() {
         if (!containsLatency)

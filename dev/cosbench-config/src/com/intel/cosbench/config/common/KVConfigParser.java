@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +48,7 @@ public class KVConfigParser {
         int pos = StringUtils.indexOf(entry, '=');
         if(pos < 0)
             logger.warn("cannot parse config entry {}", entry);
-        
+
         String key = StringUtils.trim(StringUtils.left(entry,  pos));
         String value = StringUtils.trim(StringUtils.right(entry,  entry.length() - pos -1));
         logger.debug("key=" + key + ";value=" + value);

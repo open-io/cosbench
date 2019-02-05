@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,18 +25,18 @@ public interface AmpliConstants {
 
     String TIMEOUT_KEY = "timeout";
     Integer TIMEOUT_DEFAULT = 30000;
-    
+
     String HOST_KEY = "host";
     String HOST_DEFAULT = "127.0.0.1";
-    
+
     String PORT_KEY = "port";
     int PORT_DEFAULT = 8080;
-    
+
     String NSROOT_KEY = "nsroot";
     String NSROOT_DEFAULT = "/namespace";
-    
+
     String POLICY_KEY = "policy";
     String POLICY_DEFAULT = "";
 
-    
+
 }

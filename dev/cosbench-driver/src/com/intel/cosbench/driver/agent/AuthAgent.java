@@ -96,34 +96,34 @@ class AuthAgent extends AbstractAgent {
         
         AuthAPI authApi = workerContext.getAuthApi();
         AuthContext import_context = authApi.getParms();
-    	AuthContext auth_context;
-		String id = import_context.getID();
-    	
-		boolean caching = import_context.getBoolean(AuthConstants.CACHING_KEY, AuthConstants.CACHING_DEFAULT);
-		logger.debug("input auth context is {} with caching={}", import_context.toString(), caching);
+        AuthContext auth_context;
+        String id = import_context.getID();
+        
+        boolean caching = import_context.getBoolean(AuthConstants.CACHING_KEY, AuthConstants.CACHING_DEFAULT);
+        logger.debug("input auth context is {} with caching={}", import_context.toString(), caching);
         if(caching) { // auth caching is enabled
-    		// check if auth context is already cached.
+            // check if auth context is already cached.
             logger.debug("auth caching is enabled, will query cache pool with id={}", id);
             synchronized(AuthCachePool.getInstance()) {
-        		if(AuthCachePool.getInstance().containsKey(id)) {// already cached
-        			auth_context = AuthCachePool.getInstance().get(id);
-        			logger.debug("auth context for id={} is found as {}", id, auth_context);
-        		}
-	    		else { // not found
-	    			logger.debug("auth context for id={} is not found, will try to login", id);
-					auth_context = authApi.login();
-					if(auth_context != null) // the authentication mechanism is embedded into storage adapter
-					{
-						logger.debug("login is successful, auth context for id={} will be cacahed as {}", id, auth_context);
-						AuthCachePool.getInstance().put(id,  auth_context);
-					}else { // the authentication mechanism is embedded into storage adapter
-						logger.info("no auth context required.");								
-					}
-				}
+                if(AuthCachePool.getInstance().containsKey(id)) {// already cached
+                    auth_context = AuthCachePool.getInstance().get(id);
+                    logger.debug("auth context for id={} is found as {}", id, auth_context);
+                }
+                else { // not found
+                    logger.debug("auth context for id={} is not found, will try to login", id);
+                    auth_context = authApi.login();
+                    if(auth_context != null) // the authentication mechanism is embedded into storage adapter
+                    {
+                        logger.debug("login is successful, auth context for id={} will be cacahed as {}", id, auth_context);
+                        AuthCachePool.getInstance().put(id,  auth_context);
+                    }else { // the authentication mechanism is embedded into storage adapter
+                        logger.info("no auth context required.");                                
+                    }
+                }
             }
-    	}
+        }
         else 
-			auth_context = authApi.login();
+            auth_context = authApi.login();
 
         return auth_context;
     }

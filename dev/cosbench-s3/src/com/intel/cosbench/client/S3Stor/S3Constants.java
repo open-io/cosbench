@@ -19,21 +19,21 @@ public interface S3Constants {
 
     String AUTH_USERNAME_KEY = "accesskey";
     String AUTH_USERNAME_DEFAULT = "";
-    
+
     String AUTH_PASSWORD_KEY = "secretkey";
     String AUTH_PASSWORD_DEFAULT = "";
-    
+
     // --------------------------------------------------------------------------
     // CLIENT CONFIGURATION
     // --------------------------------------------------------------------------
     String PROXY_HOST_KEY = "proxyhost";
     String PROXY_PORT_KEY = "proxyport";    
-    
+
     // MAX CONNECTIONS DEFAULT
     // --------------------------------------------------------------------------
     String MAX_CONNECTIONS = "max_connections";
     int MAX_CONNECTIONS_DEFAULT = 50;
-    
+
     // --------------------------------------------------------------------------
     // PATH STYLE ACCESS
     // --------------------------------------------------------------------------

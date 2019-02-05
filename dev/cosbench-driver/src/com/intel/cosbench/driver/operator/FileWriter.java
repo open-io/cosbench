@@ -1,5 +1,5 @@
 /** 
- 
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -86,20 +86,20 @@ class FileWriter extends AbstractOperator {
         Sample sample;
         if (!folder.canRead()) {
             doLogErr(session.getLogger(), "fail to perform file filewrite operation, can not read " + folder.getAbsolutePath());
-			sample = new Sample(new Date(), getId(), getOpType(),
-					getSampleType(), getName(), false);
+            sample = new Sample(new Date(), getId(), getOpType(),
+                    getSampleType(), getName(), false);
         }
         Random random = session.getRandom();
         String containerName = contPicker.pickContName(random, idx, all);
-        
+
         // as we index arrays starting from 0, we need to remove 1 here
         Integer rand = (filePicker.pickObjKey(random) - 1);
         String filename = null;
-        
+
         InputStream fis = null;
         filename = listOfFiles[rand].getName();
         long length = listOfFiles[rand].length();
-        
+
         try {
             if (hashCheck) {
                 HashUtil util = new HashUtil();
@@ -113,31 +113,31 @@ class FileWriter extends AbstractOperator {
             sample = doWrite(fis, length, containerName, filename, config, session);
         } catch (FileNotFoundException e) {
             doLogErr(session.getLogger(), "failed to perform file Write operation, file not found", e);
-			sample = new Sample(new Date(), getId(), getOpType(),
-					getSampleType(), getName(), false);
+            sample = new Sample(new Date(), getId(), getOpType(),
+                    getSampleType(), getName(), false);
         } catch (ArrayIndexOutOfBoundsException e) {
             doLogErr(session.getLogger(), "failed to perform file Write operation, tried to put more files than exist", e);
             sample = new Sample(new Date(),  getId(), getOpType(),
-					getSampleType(), getName(), false);
+                    getSampleType(), getName(), false);
         } catch (NoSuchAlgorithmException e) {
             doLogErr(session.getLogger(),
                     "failed to perform file Write operation, hash Algorithm MD5 not supported, deaktivate hashCheck, maybe?", e);
             sample = new Sample(new Date(), getId(), getOpType(),
-					getSampleType(), getName(), false);
+                    getSampleType(), getName(), false);
         }finally {
-        	if(fis != null) {
-        		try {
-					fis.close();
-				} catch (IOException e) {
-					doLogErr(session.getLogger(), "failed to close file " + filename, e);
-				}
-        	}
+            if(fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    doLogErr(session.getLogger(), "failed to close file " + filename, e);
+                }
+            }
         }
 
         session.getListener().onSampleCreated(sample);
         Date now = sample.getTimestamp();
-		Result result = new Result(now, getId(), getOpType(), getSampleType(),
-				getName(), sample.isSucc());
+        Result result = new Result(now, getId(), getOpType(), getSampleType(),
+                getName(), sample.isSucc());
         session.getListener().onOperationCompleted(result);
     }
 
@@ -155,10 +155,10 @@ class FileWriter extends AbstractOperator {
             doLogErr(session.getLogger(), sie.getMessage(), sie);
             throw new AbortedException();
         } catch (Exception e) {
-        	isUnauthorizedException(e, session);
+            isUnauthorizedException(e, session);
             doLogErr(session.getLogger(), "fail to perform filewrite operation", e);
             return new Sample(new Date(), getId(), getOpType(), getSampleType(),
-    				getName(), false);
+                    getName(), false);
         } finally {
             IOUtils.closeQuietly(cin);
         }
@@ -166,6 +166,6 @@ class FileWriter extends AbstractOperator {
         long end = System.nanoTime();
 
         return new Sample(new Date(),  getId(), getOpType(), getSampleType(),
-				getName(), true, (end - start) / 1000000, cin.getXferTime(), cin.getByteCount());
+                getName(), true, (end - start) / 1000000, cin.getXferTime(), cin.getByteCount());
     }
 }

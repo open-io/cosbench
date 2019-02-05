@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,18 +48,18 @@ class Bootor extends AbstractCommandTasklet<PingResponse> {
 
     @Override
     protected void handleResponse(PingResponse response) {
-    	long driverTime = 0;
-    	DriverInfo driver = getDriver();
-    	try {
-			driverTime = Long.parseLong(response.getTimeStamp());
-		} catch (NumberFormatException e) {
-			LOGGER.debug("time stamp of driver {} can not be formated", driver.getName());
-		}
+        long driverTime = 0;
+        DriverInfo driver = getDriver();
+        try {
+            driverTime = Long.parseLong(response.getTimeStamp());
+        } catch (NumberFormatException e) {
+            LOGGER.debug("time stamp of driver {} can not be formated", driver.getName());
+        }
         timeDrift = System.currentTimeMillis() - driverTime;
-    	if (!StringUtils.equals(response.getName(), driver.getName())){
-    		String msg = "expetect driver name {} dose not match the real name {}";
-    		LOGGER.debug(msg, driver.getName(), response.getName());
-    	}
+        if (!StringUtils.equals(response.getName(), driver.getName())){
+            String msg = "expetect driver name {} dose not match the real name {}";
+            LOGGER.debug(msg, driver.getName(), response.getName());
+        }
     }
 
 }

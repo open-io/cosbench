@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,24 +39,24 @@ public class CloseResponse extends Response {
     private HashMap<String, Integer> errorStatistics; /* mission error statistics*/
     private List<Metrics> wrReport;
 
-	public List<Metrics> getWrReport() {
-		return wrReport;
-	}
+    public List<Metrics> getWrReport() {
+        return wrReport;
+    }
 
-	public void setWrReport(List<Metrics> wrReport) {
-		this.wrReport = wrReport;
-	}
+    public void setWrReport(List<Metrics> wrReport) {
+        this.wrReport = wrReport;
+    }
 
-	public CloseResponse() {
+    public CloseResponse() {
         /* empty */
     }
-    
+
     public TaskState getState(){
-    	return state;
+        return state;
     }
-    
+
     public void setState(TaskState state){
-    	this.state = state;
+        this.state = state;
     }
 
     public List<Metrics> getReport() {
@@ -75,12 +75,12 @@ public class CloseResponse extends Response {
         this.driverLog = log;
     }
 
-	public HashMap<String, Integer> getErrorStatistics() {
-		return errorStatistics;
-	}
+    public HashMap<String, Integer> getErrorStatistics() {
+        return errorStatistics;
+    }
 
-	public void setErrorStatistics(HashMap<String, Integer> errorStatistics) {
-		this.errorStatistics = errorStatistics;
-	}
-    
+    public void setErrorStatistics(HashMap<String, Integer> errorStatistics) {
+        this.errorStatistics = errorStatistics;
+    }
+
 }

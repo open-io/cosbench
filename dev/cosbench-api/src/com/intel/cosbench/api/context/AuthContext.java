@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,22 +23,22 @@ package com.intel.cosbench.api.context;
  */
 public abstract class AuthContext extends Context {
 
-	/**
-	 * Generate unique ID for the authentication context with attached metadata, normally, it will 
-	 * extract some key-value pairs from the context to construct the ID.
-	 * 
-	 * @param meta
-	 * @return an unique ID
-	 */
-	public abstract String getID(String meta) ;
-	
-	
-	/**
-	 * Generate unique ID for authentication context, normally, it will extract some key-value pairs 
-	 * from the context to construct the ID.
-	 * 
-	 * @return an unique ID
-	 */
-	public abstract String getID();
-	
+    /**
+     * Generate unique ID for the authentication context with attached metadata, normally, it will 
+     * extract some key-value pairs from the context to construct the ID.
+     * 
+     * @param meta
+     * @return an unique ID
+     */
+    public abstract String getID(String meta) ;
+
+
+    /**
+     * Generate unique ID for authentication context, normally, it will extract some key-value pairs 
+     * from the context to construct the ID.
+     * 
+     * @return an unique ID
+     */
+    public abstract String getID();
+
 }

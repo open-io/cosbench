@@ -16,8 +16,8 @@ import com.intel.cosbench.bench.Snapshot;
 import com.intel.cosbench.bench.TaskReport;
 
 public class CSVTaskExporter extends AbstractTaskExporter{
-	
-	public CSVTaskExporter() {
+
+    public CSVTaskExporter() {
         /* empty */
     }
     protected void writeHeader(Writer writer) throws IOException {
@@ -40,10 +40,10 @@ public class CSVTaskExporter extends AbstractTaskExporter{
         Report report = tReport.getReport();
         /*Operation Type*/
         for(Metrics metrics:report)
-        	buffer.append(metrics.getOpType()).append(',');
+            buffer.append(metrics.getOpType()).append(',');
         /*sample Type*/
         for(Metrics metrics:report)
-        	buffer.append(metrics.getSampleType()).append(',');
+            buffer.append(metrics.getSampleType()).append(',');
         /* Operation Count */
         for (Metrics metrics :report)
             buffer.append(metrics.getSampleCount()).append(',');

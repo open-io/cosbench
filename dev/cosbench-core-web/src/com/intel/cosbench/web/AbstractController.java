@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,7 @@ public abstract class AbstractController implements Controller {
         } catch (NotFoundException nfe) {
             return new ModelAndView("404");
         } catch (FileNotFoundException fnfe) {
-        	return new ModelAndView("404", "resource", fnfe.getMessage());
+            return new ModelAndView("404", "resource", fnfe.getMessage());
         } catch (Exception e) {
             StringWriter writer = new StringWriter();
             e.printStackTrace(new PrintWriter(writer));

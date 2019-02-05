@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,12 +52,12 @@ public interface WorkloadInfo extends LifeCycle, Benchmark {
 
     public int getSnapshotCount();
 
-	public void setWorkload(Workload workload);
-	
-	public void setArchived(boolean archived);
-	
-	public boolean getArchived();
-	
-	public DriverInfo[] getDriverInfos();
+    public void setWorkload(Workload workload);
+
+    public void setArchived(boolean archived);
+
+    public boolean getArchived();
+
+    public DriverInfo[] getDriverInfos();
 
 }

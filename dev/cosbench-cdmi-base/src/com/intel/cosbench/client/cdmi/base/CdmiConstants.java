@@ -10,16 +10,16 @@ public interface CdmiConstants {
 
     String ROOT_PATH_KEY = "root_path";
     String ROOT_PATH_DEFAULT = "";
-    
+
     String RAISE_DELETE_ERRORS_KEY = "raise_delete_errors";
     Boolean RAISE_DELETE_ERRORS_DEFAULT = false;
-    
+
     String CUSTOM_HEADERS_KEY = "custom_headers";
     String CUSTOM_HEADERS_DEFAULT = "";
-    
+
     String CDMI_CONTENT_TYPE_KEY = "type";
     String CDMI_CONTENT_TYPE_DEFAULT = "cdmi";
-    
+
     // --------------------------------------------------------------------------
     // CONNECTION
     // --------------------------------------------------------------------------

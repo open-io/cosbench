@@ -28,7 +28,7 @@ public class DummyConfig implements Config {
     private final String endpoint = "127.0.0.1";
     private final String accessKey = "admin";
     private final String secretKey = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==";
-    
+
     @Override
     public String get(String key) {
         return null;
@@ -46,7 +46,7 @@ public class DummyConfig implements Config {
         } else {
             return null;
         }
-        
+
     }
 
     @Override

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,10 +26,10 @@ public interface DriverInfo {
     public String getUrl();
 
     public void setAliveState(boolean aliveState);
-    
+
     public boolean getAliveState();
-    
+
     public Map<String, String> getLogMap();
-    
+
     public String getVersion();
 }

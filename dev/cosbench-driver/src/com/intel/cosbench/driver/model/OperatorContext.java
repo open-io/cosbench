@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,9 +43,9 @@ public class OperatorContext implements Item {
     public String getName() {
         return operator.getName();
     }
-    
+
     public String getId(){
-    	return operator.getId();
+        return operator.getId();
     }
 
     public String getOpType() {

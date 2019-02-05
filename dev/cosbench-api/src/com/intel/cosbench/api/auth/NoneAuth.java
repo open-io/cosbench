@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,19 +49,19 @@ public class NoneAuth implements AuthAPI {
     public void init(Config config, Logger logger) {
         this.logger = logger;
         this.parms = new DefaultAuthContext();
-        
+
         logging = config.getBoolean(LOGGING_KEY, LOGGING_DEFAULT);
         caching = config.getBoolean(CACHING_KEY, CACHING_DEFAULT);
-        
+
         /* register all parameters */
         parms.put(LOGGING_KEY, logging);
         parms.put(CACHING_KEY, caching);
     }
     @Override
     public void init() {
-    	/* empty */
+        /* empty */
     }
-    
+
 
     @Override
     public void dispose() {

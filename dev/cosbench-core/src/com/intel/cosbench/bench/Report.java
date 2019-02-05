@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,6 +40,6 @@ public class Report extends MapRegistry<Metrics> {
     public Metrics[] getAllMetrics() {
         return getAllItems().toArray(new Metrics[getSize()]);
     }
-    
+
 
 }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,24 +30,24 @@ import com.intel.cosbench.model.WorkloadInfo;
  */
 public class Loaders {
 
-	public static RunLoader newRunExporter(BufferedReader reader)
-			throws IOException {
-		AbstractRunLoader loader = new CSVRunLoader(reader);
-		return loader;
-	}
-    
-	public static WorkloadFileLoader newWorkloadLoader(BufferedReader reader,
-			WorkloadInfo workloadContext) throws IOException {
-		AbstractWorkloadFileLoader loader = new CSVWorkloadFileLoader(reader,
-				workloadContext);
-		return loader;
-	}
+    public static RunLoader newRunExporter(BufferedReader reader)
+            throws IOException {
+        AbstractRunLoader loader = new CSVRunLoader(reader);
+        return loader;
+    }
 
-	public static SnapshotLoader newSnapshotLoader(BufferedReader reader,
-			WorkloadInfo workload, String stageId) throws IOException {
-		AbstractSnapshotLoader loader = new CSVSnapshotLoader(reader, workload,
-				stageId);
-		return loader;
-	}
+    public static WorkloadFileLoader newWorkloadLoader(BufferedReader reader,
+            WorkloadInfo workloadContext) throws IOException {
+        AbstractWorkloadFileLoader loader = new CSVWorkloadFileLoader(reader,
+                workloadContext);
+        return loader;
+    }
+
+    public static SnapshotLoader newSnapshotLoader(BufferedReader reader,
+            WorkloadInfo workload, String stageId) throws IOException {
+        AbstractSnapshotLoader loader = new CSVSnapshotLoader(reader, workload,
+                stageId);
+        return loader;
+    }
 
 }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -103,7 +103,7 @@ public class Histogram implements Cloneable {
      * The method calculates 60/80/90/95/99 percentiles.
      * 
      * @param 
-     * @return	
+     * @return    
      */
     public void recalcPercentiles() {
         int curr = 0;

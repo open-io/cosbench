@@ -8,8 +8,8 @@ import com.intel.cosbench.model.WorkloadInfo;
 
 public interface RunLoader {
 
-	public void init(BufferedReader reader) throws IOException;
+    public void init(BufferedReader reader) throws IOException;
 
-	public List<WorkloadInfo> load() throws IOException;
+    public List<WorkloadInfo> load() throws IOException;
 
 }

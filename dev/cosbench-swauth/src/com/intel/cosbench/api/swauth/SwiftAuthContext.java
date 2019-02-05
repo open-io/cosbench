@@ -28,40 +28,40 @@ import com.intel.cosbench.api.context.AuthContext;
  */
 public class SwiftAuthContext extends AuthContext {
 
-	public SwiftAuthContext(String url, String username, String password, String token, String storage_url) {
-		this.put(AUTH_URL_KEY, url);
-		this.put(AUTH_USERNAME_KEY, username);
-		this.put(AUTH_PASSWORD_KEY, password);
-		this.put(AUTH_TOKEN_KEY, token);
-		this.put(STORAGE_URL_KEY, storage_url);
-	}
-	
-	@Override
-	public String getID(String meta) {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getID());
-		builder.append(";meta=");
-		builder.append(meta);
-		
-		return builder.toString();
-	}
+    public SwiftAuthContext(String url, String username, String password, String token, String storage_url) {
+        this.put(AUTH_URL_KEY, url);
+        this.put(AUTH_USERNAME_KEY, username);
+        this.put(AUTH_PASSWORD_KEY, password);
+        this.put(AUTH_TOKEN_KEY, token);
+        this.put(STORAGE_URL_KEY, storage_url);
+    }
+    
+    @Override
+    public String getID(String meta) {
+        StringBuilder builder = new StringBuilder();
+        builder.append(getID());
+        builder.append(";meta=");
+        builder.append(meta);
+        
+        return builder.toString();
+    }
 
-	@Override
-	public String getID() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(AUTH_URL_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_URL_KEY));
-		builder.append(";");
-		builder.append(AUTH_USERNAME_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_USERNAME_KEY));
-		builder.append(";");
-		builder.append(AUTH_PASSWORD_KEY);
-		builder.append("=");
-		builder.append(this.getStr(AUTH_PASSWORD_KEY));
-				
-		return builder.toString();
-	}
+    @Override
+    public String getID() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(AUTH_URL_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_URL_KEY));
+        builder.append(";");
+        builder.append(AUTH_USERNAME_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_USERNAME_KEY));
+        builder.append(";");
+        builder.append(AUTH_PASSWORD_KEY);
+        builder.append("=");
+        builder.append(this.getStr(AUTH_PASSWORD_KEY));
+                
+        return builder.toString();
+    }
 
 }

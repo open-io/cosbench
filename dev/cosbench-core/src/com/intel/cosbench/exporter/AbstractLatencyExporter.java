@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +56,7 @@ abstract class AbstractLatencyExporter implements LatencyExporter {
         for (Metrics metrics : workload.getReport()) {
             int sum = 0;
             if(metrics.getLatency() == null)
-            	continue;
+                continue;
             int[] data = metrics.getLatency().getHistoData();
             for (int idx = 0; idx < size; idx++)
                 sum += data[idx];

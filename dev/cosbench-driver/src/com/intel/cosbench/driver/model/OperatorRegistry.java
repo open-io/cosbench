@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ public class OperatorRegistry extends MapRegistry<OperatorContext> {
     public OperatorContext getOperator(String type) {
         return getItem(type);
     }
-    
+
     public void addItem(OperatorContext item) {
         registry.put(item.getId(), item);
     }

@@ -9,7 +9,7 @@ import com.intel.cosbench.service.DriverService;
 import com.intel.cosbench.web.AbstractController;
 
 public class TriggerController extends AbstractController {
-	protected DriverService driver;
+    protected DriverService driver;
 
     public void setDriver(DriverService driver) {
         this.driver = driver;

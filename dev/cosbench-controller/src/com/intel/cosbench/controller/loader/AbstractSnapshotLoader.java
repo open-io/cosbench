@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,30 +30,30 @@ import com.intel.cosbench.model.WorkloadInfo;
  */
 abstract class AbstractSnapshotLoader implements SnapshotLoader{
 
-	protected BufferedReader reader;
-	protected WorkloadInfo workloadContext;
-	protected StageInfo stageContext;
-	
-	public AbstractSnapshotLoader() {
-		/* empty */
-	}
-	
-	@Override
-	public void init(BufferedReader reader, WorkloadInfo workloadContext,
-			String stageId) throws IOException {
-		this.reader = reader;
-		this.workloadContext = workloadContext;
-		this.stageContext = workloadContext.getStageInfo(stageId);
-	}
+    protected BufferedReader reader;
+    protected WorkloadInfo workloadContext;
+    protected StageInfo stageContext;
 
-	@Override
-	public void load() throws IOException{
-		readHeader();
-		readSnapshot();
-	}
-	
-	protected abstract void readHeader() throws IOException;
+    public AbstractSnapshotLoader() {
+        /* empty */
+    }
 
-	protected abstract void readSnapshot() throws IOException;
+    @Override
+    public void init(BufferedReader reader, WorkloadInfo workloadContext,
+            String stageId) throws IOException {
+        this.reader = reader;
+        this.workloadContext = workloadContext;
+        this.stageContext = workloadContext.getStageInfo(stageId);
+    }
+
+    @Override
+    public void load() throws IOException{
+        readHeader();
+        readSnapshot();
+    }
+
+    protected abstract void readHeader() throws IOException;
+
+    protected abstract void readSnapshot() throws IOException;
 
 }

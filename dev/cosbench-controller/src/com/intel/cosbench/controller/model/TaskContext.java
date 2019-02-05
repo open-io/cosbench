@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,21 +45,21 @@ public class TaskContext implements TaskInfo {
     private transient volatile Report report = new Report();
     /* Each task starts with an empty log */
     private volatile transient String log = "[N/A]";
- 
+
     /* Each task starts with an empty error statistics log*/
     private volatile transient HashMap<String, Integer> errorStatistics = new HashMap<String, Integer>();
     /*Each task for workers report starts with empty*/
     private  ArrayList<Metrics> wrReport = new ArrayList<Metrics>();
 
-	public ArrayList<Metrics> getWrReport() {
-		return wrReport;
-	}
+    public ArrayList<Metrics> getWrReport() {
+        return wrReport;
+    }
 
-	public void setWrReport(ArrayList<Metrics> wrReport) {
-		this.wrReport = wrReport;
-	}
+    public void setWrReport(ArrayList<Metrics> wrReport) {
+        this.wrReport = wrReport;
+    }
 
-	public TaskContext() {
+    public TaskContext() {
         /* empty */
     }
 
@@ -143,25 +143,25 @@ public class TaskContext implements TaskInfo {
     public void setLog(String log) {
         this.log = log;
     }
-   
+
 
     public HashMap<String, Integer> getErrorStatistics() {
-		return errorStatistics;
-	}
+        return errorStatistics;
+    }
 
-	public void setErrorStatistics(HashMap<String, Integer> errorStatistics) {
-		this.errorStatistics = errorStatistics;
-	}
+    public void setErrorStatistics(HashMap<String, Integer> errorStatistics) {
+        this.errorStatistics = errorStatistics;
+    }
 
-	@Override
+    @Override
     public void disposeRuntime() {
-    	if(TaskState.isStopped(state)) {
-	        httpClient = null;
-	        mapper = null;
-	        report = null;
-	        log = null;
-	        snapshot = new Snapshot();
-    	}
+        if(TaskState.isStopped(state)) {
+            httpClient = null;
+            mapper = null;
+            report = null;
+            log = null;
+            snapshot = new Snapshot();
+        }
     }
 
 }

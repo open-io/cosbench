@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ public interface AuthConstants {
 
     String LOGGING_KEY = "logging";
     Boolean LOGGING_DEFAULT = Boolean.FALSE;
-    
+
     String CACHING_KEY = "caching";
     Boolean CACHING_DEFAULT = Boolean.FALSE;  
 

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +44,7 @@ public class AbortResponse extends Response {
     public void setDriverLog(String driverLog) {
         this.driverLog = driverLog;
     }
-    
+
     public List<Metrics> getReport() {
         return report;
     }

@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,9 @@ public class HttpClientException extends HttpResponseException {
     private StatusLine httpStatusLine;
 
     public HttpClientException(int code, String message) {
-    	super(code, message);
+        super(code, message);
     }
-    
+
     public HttpClientException(int code, String message, Header[] httpHeaders,
             StatusLine httpStatusLine) {
         super(code, message);
@@ -42,7 +42,7 @@ public class HttpClientException extends HttpResponseException {
     public StatusLine getHttpStatusLine() {
         return httpStatusLine;
     }
-    
+
     private static final long serialVersionUID = 1L;
 
 }

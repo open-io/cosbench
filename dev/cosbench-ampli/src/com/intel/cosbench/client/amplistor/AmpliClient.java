@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,7 +54,7 @@ public class AmpliClient {
     }
 
     public void dispose() {
-    	request = null;
+        request = null;
         HttpClientUtil.disposeHttpClient(client);
     }
 
@@ -63,7 +63,7 @@ public class AmpliClient {
             request.abort();
         request = null;
     }
-    
+
     public boolean login() throws IOException, HttpException {
         String storageUrl = "http://" + this.host + ":" + this.port;
 
@@ -197,7 +197,7 @@ public class AmpliClient {
                 + HttpClientUtil.encodeURL(ampliFilename));
 
         method.setHeader("Content-Type", "application/octet-stream");
-        
+
         HttpResponse response = null;
         try {
             method.setEntity(new ByteArrayEntity(data));
@@ -253,8 +253,8 @@ public class AmpliClient {
                 + "/" + HttpClientUtil.encodeURL(objName));
 
         HttpResponse response = null;
-        
-    	response = client.execute(method);
+
+        response = client.execute(method);
 
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             return response.getEntity().getContent();
@@ -274,7 +274,7 @@ public class AmpliClient {
 
         HttpDelete method = null;
         HttpResponse response = null;
-        
+
         try {
             String storageUrl = "http://" + this.host + ":" + this.port
                     + nsRoot;
@@ -531,24 +531,24 @@ public class AmpliClient {
         HttpResponse response = null;
         try
         {
-        
-        	response = client.execute(method);
 
-	        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-	            Header[] headers = response.getAllHeaders();
-	            Map<String, String> map = new HashMap<String, String>();
-	
-	            for (Header header : headers) {
-	                map.put(header.getName(), header.getValue());
-	            }
-	
-	            return map;
-	        } else {
-	            throw new AmpliException(
-	                    "unexpected error when request object metadata " + objName
-	                            + "@" + namespace, response.getAllHeaders(),
-	                    response.getStatusLine());
-	        }
+            response = client.execute(method);
+
+            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                Header[] headers = response.getAllHeaders();
+                Map<String, String> map = new HashMap<String, String>();
+
+                for (Header header : headers) {
+                    map.put(header.getName(), header.getValue());
+                }
+
+                return map;
+            } else {
+                throw new AmpliException(
+                        "unexpected error when request object metadata " + objName
+                                + "@" + namespace, response.getAllHeaders(),
+                        response.getStatusLine());
+            }
         } finally {
             if (response != null)
                 EntityUtils.consume(response.getEntity());

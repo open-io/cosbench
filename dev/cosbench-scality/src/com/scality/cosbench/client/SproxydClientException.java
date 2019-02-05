@@ -21,28 +21,28 @@ import org.apache.http.client.HttpResponseException;
 
 
 public class SproxydClientException extends HttpResponseException {
-	private Header[] httpHeaders;
-	private StatusLine httpStatusLine;
+    private Header[] httpHeaders;
+    private StatusLine httpStatusLine;
 
-	public SproxydClientException(int code, String message) {
-		super(code, message);
-	}
+    public SproxydClientException(int code, String message) {
+        super(code, message);
+    }
 
-	public SproxydClientException(int code, String message, Header[] httpHeaders,
-			StatusLine httpStatusLine) {
-		super(code, message);
-		this.httpHeaders = httpHeaders;
-		this.httpStatusLine = httpStatusLine;
-	}
+    public SproxydClientException(int code, String message, Header[] httpHeaders,
+            StatusLine httpStatusLine) {
+        super(code, message);
+        this.httpHeaders = httpHeaders;
+        this.httpStatusLine = httpStatusLine;
+    }
 
-	public Header[] getHttpHeaders() {
-		return httpHeaders;
-	}
+    public Header[] getHttpHeaders() {
+        return httpHeaders;
+    }
 
-	public StatusLine getHttpStatusLine() {
-		return httpStatusLine;
-	}
+    public StatusLine getHttpStatusLine() {
+        return httpStatusLine;
+    }
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 }

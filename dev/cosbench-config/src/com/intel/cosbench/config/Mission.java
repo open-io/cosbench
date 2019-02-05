@@ -178,11 +178,11 @@ public class Mission implements Iterable<Operation> {
     }
     
     public boolean hasHisto() {
-    	if(config != null) {
-    		return KVConfigParser.parse(config).getBoolean("histo", true);
-    	}
-    	
-    	return true;
+        if(config != null) {
+            return KVConfigParser.parse(config).getBoolean("histo", true);
+        }
+        
+        return true;
     }
 
     public String getConfig() {
@@ -222,7 +222,7 @@ public class Mission implements Iterable<Operation> {
         if (operations == null || operations.isEmpty())
             throw new ConfigException("a mission must have opertations");
         for(Operation op: operations) {
-        	op.setConfig(ConfigUtils.inherit(op.getConfig(), this.config));
+            op.setConfig(ConfigUtils.inherit(op.getConfig(), this.config));
         }
         this.operations = operations;
     }

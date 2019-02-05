@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,9 +45,9 @@ class Querier extends AbstractCommandTasklet<QueryResponse> {
         do {
             sleep();
             try{
-            	issueCommand("query", id);
+                issueCommand("query", id);
             }catch(Exception tle) {
-            	LOGGER.warn("some unexpected exception occurs when ping drivers, but it's ignorable.", tle);
+                LOGGER.warn("some unexpected exception occurs when ping drivers, but it's ignorable.", tle);
             }
         } while (!context.getState().equals(FINISHED));
     }
@@ -63,11 +63,11 @@ class Querier extends AbstractCommandTasklet<QueryResponse> {
 
     @Override
     protected void handleResponse(QueryResponse response) {
-    	if (response == null) {
-    		LOGGER.warn("no response gets from driver");
-    		return;
-    	}
-    	
+        if (response == null) {
+            LOGGER.warn("no response gets from driver");
+            return;
+        }
+
         if (!response.isRunning())
             context.setState(FINISHED); // stop querying
         Date time = response.getTime();

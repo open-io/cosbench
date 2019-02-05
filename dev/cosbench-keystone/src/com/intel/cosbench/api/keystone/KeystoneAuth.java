@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +48,7 @@ class KeystoneAuth extends NoneAuth {
     /* tenant info */
     private String tenantId;
     private String tenantName;
-    
+
     /*keystone region*/
     private String region;
 
@@ -57,7 +57,7 @@ class KeystoneAuth extends NoneAuth {
 
     /* connection setting */
     private int timeout;
-    
+
     Logger logger = null;
 
     public KeystoneAuth() {
@@ -87,7 +87,7 @@ class KeystoneAuth extends NoneAuth {
         parms.put(AUTH_SERVICE_KEY, service);
         parms.put(CONN_TIMEOUT_KEY, timeout);
         parms.put(AUTH_REGION_KEY, AUTH_REGION_DEFAULT);
-        
+
 
         logger.debug("using auth config: {}", parms);
 
@@ -126,7 +126,7 @@ class KeystoneAuth extends NoneAuth {
 //        context.put(STORAGE_URL_KEY, client.getServiceUrl(service));
 //        return context;
         KeystoneAuthContext context = new KeystoneAuthContext(url, username, password, service, client.getKeystoneTokenId(), client.getServiceUrl(service,region));
-        
+
         return context;
     }
 

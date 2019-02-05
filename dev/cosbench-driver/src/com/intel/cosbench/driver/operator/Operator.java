@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,12 +20,12 @@ package com.intel.cosbench.driver.operator;
 import com.intel.cosbench.utils.MapRegistry;
 
 public interface Operator extends MapRegistry.Item {
-	
-	public String getId();
-	
-	public String getName();
-	
-	public int getRatio();
+
+    public String getId();
+
+    public String getName();
+
+    public int getRatio();
 
     public String getOpType();
 

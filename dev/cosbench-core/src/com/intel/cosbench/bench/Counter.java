@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ public class Counter {
 
     /* limit for the response time histogram */
     public final static long RES_MAX = 500 * 1000; // 500 seconds
-    
+
     /* the index of upper limit */
     public final static int UL = (int) (RES_MAX/RES_INT);
 
@@ -57,7 +57,7 @@ public class Counter {
     /**
      * The method counts the time to corresponding bucket.
      * 
-     * @param time	the response time to be counted
+     * @param time    the response time to be counted
      * @return
      */
     public void doAdd(long time) {

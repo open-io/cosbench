@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,17 +37,17 @@ class Formats {
     public static final NumberFormat NUM = new DecimalFormat("0.##");
 
     public static final NumberFormat RATIO = new DecimalFormat("0.##%");
-    
+
     public static double getDoubleValue(String column) {
-		return column.equalsIgnoreCase("N/A") ? 0D : Double.valueOf(column);
-	}
-	
-	public static int getIntValue(String column) {
-		return column.equalsIgnoreCase("N/A") ? 0 : Integer.valueOf(column);
-	}
-	
-	public static long getLongValue(String column) {
-		return column.equalsIgnoreCase("N/A") ? 0L : Long.valueOf(column);
-	}
+        return column.equalsIgnoreCase("N/A") ? 0D : Double.valueOf(column);
+    }
+
+    public static int getIntValue(String column) {
+        return column.equalsIgnoreCase("N/A") ? 0 : Integer.valueOf(column);
+    }
+
+    public static long getLongValue(String column) {
+        return column.equalsIgnoreCase("N/A") ? 0L : Long.valueOf(column);
+    }
 
 }

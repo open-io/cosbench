@@ -33,27 +33,27 @@ public class ControllerContext implements ControllerInfo {
     private String archive_dir;
     private int concurrency;
     private DriverRegistry driverRegistry;
-	private String version;
-	private String time;
-	
-	public String getTime() {
-		time = new Date().toString();
-		return time;
-	}
-	
-	public void setTime(String timeStr) {
-		time = timeStr;
-	}
-	
+    private String version;
+    private String time;
+    
+    public String getTime() {
+        time = new Date().toString();
+        return time;
+    }
+    
+    public void setTime(String timeStr) {
+        time = timeStr;
+    }
+    
     public String getVersion() {
-		return version;
-	}
+        return version;
+    }
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
-	public ControllerContext() {
+    public ControllerContext() {
         /* empty */
     }
 
@@ -76,14 +76,14 @@ public class ControllerContext implements ControllerInfo {
     }
 
     public String getArchive_dir() {
-		return archive_dir;
-	}
+        return archive_dir;
+    }
 
-	public void setArchive_dir(String archive_dir) {
-		this.archive_dir = archive_dir;
-	}
+    public void setArchive_dir(String archive_dir) {
+        this.archive_dir = archive_dir;
+    }
 
-	public int getConcurrency() {
+    public int getConcurrency() {
         return concurrency;
     }
 

@@ -51,19 +51,19 @@ abstract class AbstractCommandTasklet<T extends Response> extends
     }
 
     protected void issueCommand(String command) {
-    	int count = 3;
-    	long timeStamp = System.currentTimeMillis();
-    	while (--count >= 0) {
-    		issueCommand(command, String.valueOf(timeStamp));
-    		if (Math.abs(timeDrift) < tolerableTimeDrift)
-				break;
-    		timeStamp = System.currentTimeMillis() + timeDrift / 2;
-		}
-    	LOGGER.info("time drift between controller and driver-{} is {} mSec",
-				getDriver().getName(), timeDrift);
-    	if (count < 0)
-			LOGGER.warn("time drift is still longer than tolerable time drift {} mSec after 3 times of synchronization",
-					tolerableTimeDrift);
+        int count = 3;
+        long timeStamp = System.currentTimeMillis();
+        while (--count >= 0) {
+            issueCommand(command, String.valueOf(timeStamp));
+            if (Math.abs(timeDrift) < tolerableTimeDrift)
+                break;
+            timeStamp = System.currentTimeMillis() + timeDrift / 2;
+        }
+        LOGGER.info("time drift between controller and driver-{} is {} mSec",
+                getDriver().getName(), timeDrift);
+        if (count < 0)
+            LOGGER.warn("time drift is still longer than tolerable time drift {} mSec after 3 times of synchronization",
+                    tolerableTimeDrift);
     }
 
     protected void issueCommand(String command, String content) {

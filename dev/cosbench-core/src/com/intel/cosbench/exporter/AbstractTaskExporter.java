@@ -16,34 +16,34 @@ public abstract class AbstractTaskExporter implements TaskExporter {
     protected WorkloadInfo workloadInfo;
     protected DriverInfo driverInfo;
     protected List<TaskReport> driverTasks = new ArrayList<TaskReport>(); 
-    
-	public WorkloadInfo getWorkloadInfo() {
-		return workloadInfo;
-	}
 
-	public void setWorkloadInfo(WorkloadInfo workloadInfo) {
-		this.workloadInfo = workloadInfo;
-	}
+    public WorkloadInfo getWorkloadInfo() {
+        return workloadInfo;
+    }
 
-	public DriverInfo getDriverInfo() {
-		return driverInfo;
-	}
+    public void setWorkloadInfo(WorkloadInfo workloadInfo) {
+        this.workloadInfo = workloadInfo;
+    }
 
-	public void setDriverInfo(DriverInfo driverInfo) {
-		this.driverInfo = driverInfo;
-	}
-	
-	
-	 @Override
+    public DriverInfo getDriverInfo() {
+        return driverInfo;
+    }
+
+    public void setDriverInfo(DriverInfo driverInfo) {
+        this.driverInfo = driverInfo;
+    }
+
+
+     @Override
     public void export(Writer writer) throws IOException {
-		 //check every stage every task   
-		for(StageInfo sInfo:workloadInfo.getStageInfos()){
-			for(TaskReport tReport:sInfo.getTaskReports()){
-				if(tReport.getDriverUrl().equals(driverInfo.getUrl())){
-					driverTasks.add(tReport);
-				}
-			}
-		}
+         //check every stage every task   
+        for(StageInfo sInfo:workloadInfo.getStageInfos()){
+            for(TaskReport tReport:sInfo.getTaskReports()){
+                if(tReport.getDriverUrl().equals(driverInfo.getUrl())){
+                    driverTasks.add(tReport);
+                }
+            }
+        }
         writeReport(writer);
     }
 

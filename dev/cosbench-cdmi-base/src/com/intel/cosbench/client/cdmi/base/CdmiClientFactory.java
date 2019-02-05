@@ -8,14 +8,14 @@ package com.intel.cosbench.client.cdmi.base;
  */
 public class CdmiClientFactory {
 
-	public static BaseCdmiClient getClient(String type) {
-		if("cdmi".equalsIgnoreCase(type)) { // cdmi content type
-			return new CdmiClient();
-		}else if("non-cdmi".equalsIgnoreCase(type)) {
-			return new NonCdmiClient();
-		}else {
-			System.err.println("Type: " + type + " is not supported yet.");
-			return null;
-		}
-	}
+    public static BaseCdmiClient getClient(String type) {
+        if("cdmi".equalsIgnoreCase(type)) { // cdmi content type
+            return new CdmiClient();
+        }else if("non-cdmi".equalsIgnoreCase(type)) {
+            return new NonCdmiClient();
+        }else {
+            System.err.println("Type: " + type + " is not supported yet.");
+            return null;
+        }
+    }
 }

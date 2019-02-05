@@ -1,5 +1,5 @@
 /** 
- 
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,9 +30,9 @@ public interface StageInfo extends LifeCycle, Benchmark {
     public String getId();
 
     public StageState getState();
-    
+
     public void setState(String state, Date date);
-    
+
     public void setState(StageState state, boolean archived);
 
     public StateInfo[] getStateHistory();
@@ -52,15 +52,15 @@ public interface StageInfo extends LifeCycle, Benchmark {
     public TaskInfo[] getTaskInfos();
 
     public Snapshot[] getSnapshots();
-    
+
     public int getSnapshotCount();
 
-	public void setReport(Report report);
-	
-	public ListRegistry<Snapshot> getSnapshotRegistry();
-	
+    public void setReport(Report report);
+
+    public ListRegistry<Snapshot> getSnapshotRegistry();
+
     public List<TaskReport> getTaskReports();
 
-	public void setTaskReports(List<TaskReport> taskReports);
+    public void setTaskReports(List<TaskReport> taskReports);
 
 }
