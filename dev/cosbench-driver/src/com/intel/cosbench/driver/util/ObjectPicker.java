@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.driver.util;
 
@@ -28,9 +28,9 @@ import com.intel.cosbench.driver.generator.*;
 
 /**
  * This class encapsulates logic to pick up objects.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 public class ObjectPicker {
 
@@ -91,7 +91,7 @@ public class ObjectPicker {
     public String[] pickTargetPath(Random random, int idx, int all) {
         synchronized (this) {
             if (conNmGen == null && objNmGen != null) {
-                throw new ConfigException("no such key defined: " + "containers"); 
+                throw new ConfigException("no such key defined: " + "containers");
             } else if (conNmGen == null && objNmGen == null) {
                 return new String[] { "", "" };
             } else if (objNmGen == null) {

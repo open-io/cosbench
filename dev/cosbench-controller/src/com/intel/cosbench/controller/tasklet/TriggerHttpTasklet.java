@@ -44,7 +44,7 @@ abstract class TriggerHttpTasklet implements Tasklet{
         this.driver = driver;
         this.trigger = trigger;
         this.isEnable = option;
-        this.wsId = wsId;        
+        this.wsId = wsId;
     }
 
     protected void initObjectMapper() {

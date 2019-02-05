@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.driver.operator;
 
@@ -35,9 +35,9 @@ import com.intel.cosbench.service.AbortedException;
 
 /**
  * This class represents primitive WRITE operation.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 class Writer extends AbstractOperator {
 
@@ -90,7 +90,7 @@ class Writer extends AbstractOperator {
         if (Thread.interrupted())
             throw new AbortedException();
 
-        XferCountingInputStream cin = new XferCountingInputStream(in);    
+        XferCountingInputStream cin = new XferCountingInputStream(in);
         long start = System.nanoTime();
 
         try {
@@ -119,17 +119,17 @@ class Writer extends AbstractOperator {
      * public static Sample doWrite(byte[] data, String conName, String objName,
      * Config config, Session session) { if (Thread.interrupted()) throw new
      * AbortedException();
-     * 
+     *
      * long start = System.currentTimeMillis();
-     * 
+     *
      * try { session.getApi().createObject(conName, objName, data, config); }
      * catch (StorageInterruptedException sie) { throw new AbortedException(); }
      * catch (Exception e) { doLog(session.getLogger(),
      * "fail to perform write operation", e); return new Sample(new Date(),
      * OP_TYPE, false); }
-     * 
+     *
      * long end = System.currentTimeMillis();
-     * 
+     *
      * Date now = new Date(end); return new Sample(now, OP_TYPE, true, end -
      * start, data.length); }
      */

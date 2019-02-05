@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.api.httpauth;
 
@@ -54,9 +54,9 @@ import com.intel.cosbench.log.Logger;
 
 /**
  * This class encapsulates a Http BASIC/DIGEST Authentication implementation for the Auth-API.
- * 
+ *
  * @author ywang19
- * 
+ *
  */
 class HttpAuth extends NoneAuth {
     private AbstractHttpClient client = null;
@@ -94,7 +94,7 @@ class HttpAuth extends NoneAuth {
 //        port = config.getInt(AUTH_PORT_KEY, AUTH_PORT_DEFAULT);
         auth_url = config.get(AUTH_URL_KEY, AUTH_URL_DEFAULT);
         username = config.get(AUTH_USERNAME_KEY, AUTH_USERNAME_DEFAULT);
-        password = config.get(AUTH_PASSWORD_KEY, AUTH_PASSWORD_DEFAULT);        
+        password = config.get(AUTH_PASSWORD_KEY, AUTH_PASSWORD_DEFAULT);
         timeout = config.getInt(CONN_TIMEOUT_KEY, CONN_TIMEOUT_DEFAULT);
 
         logger.debug("using auth config: {}", parms);
@@ -123,10 +123,10 @@ class HttpAuth extends NoneAuth {
         HttpGet method = new HttpGet(auth_url);
         method.getParams().setIntParameter(CoreConnectionPNames.SO_TIMEOUT, timeout);
 
-        client.getCredentialsProvider().setCredentials(new AuthScope(uri.getHost(), uri.getPort()), 
+        client.getCredentialsProvider().setCredentials(new AuthScope(uri.getHost(), uri.getPort()),
                 new UsernamePasswordCredentials(this.username, this.password));
 
-        HttpContext localContext = new BasicHttpContext();        
+        HttpContext localContext = new BasicHttpContext();
         localContext.setAttribute(AuthPNames.TARGET_AUTH_PREF, Arrays.asList(new String[] {AuthPolicy.BASIC, AuthPolicy.DIGEST}));
 
         HttpResponse response = null;
@@ -171,7 +171,7 @@ class HttpAuth extends NoneAuth {
 //        AuthContext context = new DefaultAuthContext();
 //        context.put(AUTH_CLIENT_KEY, client);
 //        context.put(STORAGE_URL_KEY, auth_url);
-//        
+//
 //        return context;
         HttpAuthContext context = new HttpAuthContext(auth_url, username, password, client);
 

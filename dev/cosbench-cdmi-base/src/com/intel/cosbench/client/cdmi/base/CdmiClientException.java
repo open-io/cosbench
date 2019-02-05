@@ -12,7 +12,7 @@ public class CdmiClientException extends HttpResponseException {
     public CdmiClientException(int code, String message) {
         super(code, message);
     }
-    
+
     public CdmiClientException(int code, String message, Header[] httpHeaders,
             StatusLine httpStatusLine) {
         super(code, message);
@@ -27,7 +27,7 @@ public class CdmiClientException extends HttpResponseException {
     public StatusLine getHttpStatusLine() {
         return httpStatusLine;
     }
-    
+
     private static final long serialVersionUID = 1L;
 
 }

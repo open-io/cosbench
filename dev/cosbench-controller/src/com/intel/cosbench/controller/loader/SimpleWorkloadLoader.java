@@ -33,10 +33,10 @@ public class SimpleWorkloadLoader implements WorkloadLoader {
     public SimpleWorkloadLoader() {
         this("archive");
     }
-    
+
     public SimpleWorkloadLoader(final String archive) {
         ARCHIVE_DIR = new File(archive);
-        
+
         if (!ARCHIVE_DIR.exists())
             ARCHIVE_DIR.mkdirs();
         String path = ARCHIVE_DIR.getAbsolutePath();
@@ -79,7 +79,7 @@ public class SimpleWorkloadLoader implements WorkloadLoader {
             createStages(workloadContext);
         }else {
             ((WorkloadContext) workloadContext).setStageRegistry(new StageRegistry());
-        }        
+        }
     }
 
     public static XmlConfig getWorkloadConfg(WorkloadInfo workloadContext)

@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.driver.operator;
 
@@ -28,9 +28,9 @@ import com.intel.cosbench.service.AbortedException;
 
 /**
  * This class represents primitive DELETE operation.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 class Deleter extends AbstractOperator {
 
@@ -77,11 +77,11 @@ class Deleter extends AbstractOperator {
             doLogErr(session.getLogger(), sie.getMessage(), sie);
             throw new AbortedException();
         } catch (StorageException se) {
-            String msg = "Error deleting object " +  conName + ": " + objName; 
+            String msg = "Error deleting object " +  conName + ": " + objName;
             doLogWarn(session.getLogger(), msg);
         } catch (Exception e) {
             isUnauthorizedException(e, session);
-            errorStatisticsHandle(e, session, conName + "/" + objName); 
+            errorStatisticsHandle(e, session, conName + "/" + objName);
 
             return new Sample(new Date(), op.getId(), op.getOpType(),
                     op.getSampleType(), op.getName(), false);

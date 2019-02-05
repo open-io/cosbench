@@ -1,8 +1,8 @@
 package com.intel.cosbench.bench;
 /**
  * The class is the data structure of task info
- * 
- * @author liyuan 
+ *
+ * @author liyuan
  *
  */
 public class TaskReport {

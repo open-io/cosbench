@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.bench;
 
@@ -22,7 +22,7 @@ import com.intel.cosbench.utils.MapRegistry.Item;
 
 /**
  * The class represents the overall performance metrics per each type.
- * 
+ *
  * @author ywang19, qzheng7
  *
  */
@@ -45,7 +45,7 @@ public class Metrics implements Item, Cloneable {
     private int workerCount; /* total workers involved */
 
     /* Metrics */
-    
+
     private double avgResTime; /* average response time */
     private double avgXferTime; /* average transfer time */
     private double throughput; /* operation throughput */
@@ -53,7 +53,7 @@ public class Metrics implements Item, Cloneable {
 
     /* Latency Details */
     private Histogram latency; /* detailed latency metrics */
-    
+
     /* success ratio */
     private double ratio;
 
@@ -85,19 +85,19 @@ public class Metrics implements Item, Cloneable {
     public void setSampleType(String sampleType) {
         this.sampleType = sampleType;
     }
-    
+
     public String getOpName(){
         return opName;
     }
-    
+
     public void setOpName(String opName){
         this.opName = opName;
     }
-    
+
     public String getOpId() {
         return opId;
     }
-    
+
     public void setOpId(String opId) {
         this.opId = opId;
     }
@@ -149,7 +149,7 @@ public class Metrics implements Item, Cloneable {
     public void setAvgXferTime(double avgXferTime) {
         this.avgXferTime = avgXferTime;
     }
-    
+
     public double getThroughput() {
         return throughput;
     }
@@ -173,11 +173,11 @@ public class Metrics implements Item, Cloneable {
     public void setLatency(Histogram latency) {
         this.latency = latency;
     }
-    
+
     public void setRatio(double ratio) {
         this.ratio = ratio;
     }
-    
+
     public double getRatio() {
         return ratio;
     }

@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,7 +12,7 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
+limitations under the License.
 */
 
 package com.intel.cosbench.driver.handler;
@@ -80,7 +80,7 @@ public class TriggerHandler extends AbstractCommandHandler {
                 Process process = Runtime.getRuntime().exec(cmdArr);
                 getPID(process);
                 InputStream is = process.getInputStream();
-                    BufferedReader buff = new BufferedReader(new InputStreamReader(is));  
+                    BufferedReader buff = new BufferedReader(new InputStreamReader(is));
                     String line = null;
                     while ((line = buff.readLine()) != null)
                         scriptLog += line + "\n";
@@ -206,9 +206,9 @@ public class TriggerHandler extends AbstractCommandHandler {
         List<Integer> pidList = new ArrayList<Integer>();
         String cmdLine = "ps -ef | grep " + pid + " | awk '{print $2}'";
         try {
-             Process process = Runtime.getRuntime().exec(new String[]{"/bin/sh", "-c", cmdLine}); 
+             Process process = Runtime.getRuntime().exec(new String[]{"/bin/sh", "-c", cmdLine});
              InputStream is = process.getInputStream();
-             BufferedReader buff = new BufferedReader(new InputStreamReader(is));  
+             BufferedReader buff = new BufferedReader(new InputStreamReader(is));
 
              String line = null;
              while ((line = buff.readLine()) != null) {
@@ -263,6 +263,6 @@ public class TriggerHandler extends AbstractCommandHandler {
         response.setPID(isEnable ? Integer.toString(xferPID) : "0");
         response.setScriptLog(scriptLog);
         return response;
-    }   
+    }
 
 }

@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,7 +12,7 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
+limitations under the License.
  */
 
 package com.intel.cosbench.driver.generator;
@@ -55,7 +55,7 @@ public class RangeIntGenerator implements IntGenerator {
                 while (i++ < 11) {
                     int answer = generator.next(rnd, idx, all);
                     if (!results.contains(answer)) {
-                        System.out.println(this.getName() + ": " + answer);    
+                        System.out.println(this.getName() + ": " + answer);
                     } else {
                         System.out.println(this.getName() + ": " + answer + " I did get this before!");
                     }
@@ -99,7 +99,7 @@ public class RangeIntGenerator implements IntGenerator {
     }
 
     private synchronized void init(int all) {
-        if(cursors != null) 
+        if(cursors != null)
             return;
 
           this.cursors = new AtomicInteger[all];

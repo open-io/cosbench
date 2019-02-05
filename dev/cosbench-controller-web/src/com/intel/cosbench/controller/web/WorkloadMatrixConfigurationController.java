@@ -12,7 +12,7 @@ import com.intel.cosbench.model.WorkloadInfo;
 import com.intel.cosbench.service.ControllerService;
 import com.intel.cosbench.web.AbstractController;
 
-public class WorkloadMatrixConfigurationController extends AbstractController {    
+public class WorkloadMatrixConfigurationController extends AbstractController {
 
     protected ControllerService controller;
 
@@ -25,7 +25,7 @@ public class WorkloadMatrixConfigurationController extends AbstractController {
             HttpServletResponse res) {
 
         try {
-            constructWorkloadConfigsFromPostData(req);             
+            constructWorkloadConfigsFromPostData(req);
 
         } catch (Exception e) {
             return createErrResult(e.getMessage());
@@ -48,7 +48,7 @@ public class WorkloadMatrixConfigurationController extends AbstractController {
             return result;
         }
 
-        private ModelAndView createSuccResult() {        
+        private ModelAndView createSuccResult() {
             WorkloadInfo[] aInfos = controller.getActiveWorkloads();
             ModelAndView result = new ModelAndView("submit", "aInfos", aInfos);
             result.addObject("cInfo", controller.getControllerInfo());

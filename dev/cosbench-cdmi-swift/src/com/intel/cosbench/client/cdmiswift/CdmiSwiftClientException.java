@@ -12,7 +12,7 @@ public class CdmiSwiftClientException extends HttpResponseException {
     public CdmiSwiftClientException(int code, String message) {
         super(code, message);
     }
-    
+
     public CdmiSwiftClientException(int code, String message, Header[] httpHeaders,
             StatusLine httpStatusLine) {
         super(code, message);
@@ -27,7 +27,7 @@ public class CdmiSwiftClientException extends HttpResponseException {
     public StatusLine getHttpStatusLine() {
         return httpStatusLine;
     }
-    
+
     private static final long serialVersionUID = 1L;
 
 }

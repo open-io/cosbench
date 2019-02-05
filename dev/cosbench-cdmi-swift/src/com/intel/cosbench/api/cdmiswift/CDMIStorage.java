@@ -55,7 +55,7 @@ public class CDMIStorage extends NoneStorage {
 //                for(int i=0; i<parts.length; i++)
 //                    tempUrl += parts[i] + "/";
 //            }
-//            
+//
 //            logger.debug("auth token=" + authToken + ", storage url=" + tempUrl);
 //            client.init(authToken, tempUrl);
 //        } catch (Exception e) {

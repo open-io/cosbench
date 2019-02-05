@@ -39,12 +39,12 @@ public class TriggerRunner {
 
     private void executeTasklets(List<Tasklet> tasklets, boolean option) {
         int num = tasklets.size();
-        LOGGER.debug("begin to execute {}-trigger tasklets, {} in total", 
+        LOGGER.debug("begin to execute {}-trigger tasklets, {} in total",
                 option ? "enable" : "kill", num);
         try {
             executor.invokeAll(tasklets);
         } catch (InterruptedException e) {
-            LOGGER.debug("{}-trigger tasklets have interrupted", 
+            LOGGER.debug("{}-trigger tasklets have interrupted",
                     option ? "enable" : "kill", num);
             return; //no return is ok?
         }

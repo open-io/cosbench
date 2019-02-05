@@ -4,7 +4,7 @@ import com.intel.cosbench.api.storage.StorageAPI;
 import com.intel.cosbench.api.storage.StorageAPIFactory;
 
 /**
- * 
+ *
  * @author Christopher Dedeurwaerder
  *
  */

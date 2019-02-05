@@ -1,4 +1,4 @@
-/** 
+/**
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -9,7 +9,7 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
+limitations under the License.
  */
 package com.intel.cosbench.driver.generator;
 
@@ -26,12 +26,12 @@ import com.intel.cosbench.config.ConfigException;
 //import com.intel.cosbench.driver.generator.RangeIntGenerator.TestThread;
 
 /**
- * 
+ *
  * This class provides an weighted histogram int generator. To configure it, specify a comma separated list of buckets
  * where each bucket is defined by a range and an integer weight. For example:
- * 
+ *
  * h(1|64|10,64|512|70,512|2048|20)KB
- * 
+ *
  * @author Christophe Vedel <cv@scality.com>
  *
  */
@@ -121,7 +121,7 @@ public class HistogramIntGenerator implements IntGenerator {
             bucketsList.add(new Bucket(lower, upper, weight));
         }
         if (bucketsList.isEmpty()) {
-            throw new IllegalArgumentException();            
+            throw new IllegalArgumentException();
         }
         Collections.sort(bucketsList, new LowerComparator());
         final Bucket[] buckets = bucketsList.toArray(new Bucket[0]);

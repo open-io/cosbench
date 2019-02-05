@@ -382,15 +382,15 @@ public class WorkloadConfigGenerator {
                         sizeSpec = "c";
                     }
 
-                    String stageName = "w" + sizeString 
-                            + "_c" + numcontainers 
+                    String stageName = "w" + sizeString
+                            + "_c" + numcontainers
                             + "_o" + numobjects
                             + "_prepare_" + numworkers;
 
-                    String configLine = 
-                        "containers=r(" + from_container + "," + to_container 
+                    String configLine =
+                        "containers=r(" + from_container + "," + to_container
                         + ");objects=r(" + from_object + "," + to_object
-                        + ");sizes=" + sizeSpec + sizeString; 
+                        + ");sizes=" + sizeSpec + sizeString;
 
                     Stage stage = createAWorkstage(workflow, stageName, "prepare", numworkers + "", configLine);
 

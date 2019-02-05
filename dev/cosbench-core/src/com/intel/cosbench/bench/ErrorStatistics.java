@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 package com.intel.cosbench.bench;
 
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class ErrorStatistics {
     private HashMap<String, Exception> stackTraceAndException;
     private HashMap<String, String> stackTraceAndTargets;
 
-    //summary the result 
+    //summary the result
     private HashMap<String, String> stackTraceAndMessage;
     private HashMap<String, String> stackTraceAndErrorCode;
     private HashMap<String, String> stackTraceAndNum;
@@ -38,7 +38,7 @@ public class ErrorStatistics {
 
     public ErrorStatistics(){
         stackTraceAndException = new HashMap<String, Exception>();
-        stackTraceAndTargets = new HashMap<String, String>(); 
+        stackTraceAndTargets = new HashMap<String, String>();
         stackTraceAndMessage = new HashMap<String, String>();
         stackTraceAndErrorCode = new HashMap<String, String>();
         stackTraceAndEntireTrace = new HashMap<String, String>();
@@ -109,7 +109,7 @@ public class ErrorStatistics {
             for(StackTraceElement ele: stackTraceAndException.get(entry.getKey()).getStackTrace())
                 trace += ele.toString()+"\n";
             stackTraceAndEntireTrace.put(entry.getKey(), trace);
-            logger.error("error code: " + code + " occurred " +codeNumber + " times, fail to operate: " + entry.getValue(), stackTraceAndException.get(entry.getKey()));            
+            logger.error("error code: " + code + " occurred " +codeNumber + " times, fail to operate: " + entry.getValue(), stackTraceAndException.get(entry.getKey()));
         }
     }
 
@@ -120,12 +120,12 @@ public class ErrorStatistics {
         return codeNumber;
     }
 
-      public static boolean isInteger(String str) {    
-        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");    
+      public static boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
         if(str !=null && pattern.matcher(str) != null)
             return pattern.matcher(str).matches();
         else
             return false;
-      }  
+      }
 
 }

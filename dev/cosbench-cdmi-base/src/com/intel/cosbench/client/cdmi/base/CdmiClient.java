@@ -15,7 +15,7 @@ import com.intel.cosbench.client.cdmi.util.CdmiJsonInputStreamEntity;
 
 /**
  * This class encapsulates operations to access cdmi compatible server with cdmi content type.
- * 
+ *
  * @author ywang19
  *
  */
@@ -24,13 +24,13 @@ public class CdmiClient extends BaseCdmiClient {
 //    private HttpClient client;
 //    private String uri;
 //    private ArrayList<Header> custom_headers = new ArrayList<Header> ();
-    
+
     private final static String cdmi_ver = "1.0.1";
 
 //    public CdmiClient(boolean flag) {
 //        this.raise_delete_errors = flag;
 //    }
-    
+
     public CdmiClient() {
         super();
     }
@@ -39,15 +39,15 @@ public class CdmiClient extends BaseCdmiClient {
 //        this.client = httpClient;
 //        this.uri = uri;
 //        this.raise_delete_errors = flag;
-//        
+//
 //        for(String key: headerKV.keySet())
-//            this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));    
+//            this.custom_headers.add(new BasicHeader(key, headerKV.get(key)));
 //    }
 
     public void dispose() {
         client.getConnectionManager().shutdown();
     }
-    
+
     private void setCustomHeaders(HttpRequest method) {
         for(Header header : custom_headers)
             method.setHeader(header);
@@ -59,17 +59,17 @@ public class CdmiClient extends BaseCdmiClient {
         try {
             // Create the request
             HttpPut method = new HttpPut(uri + "/" + encodeURL(container) + "/");
-            
+
             method.setHeader("Accept", "application/cdmi-container");
             method.setHeader("Content-Type", "application/cdmi-container");
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             setCustomHeaders(method);
-            
+
             method.setEntity(new StringEntity("{}"));
-            
+
             response = client.execute(method, httpContext);
             int statusCode = response.getStatusLine().getStatusCode();
- 
+
             if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
                 return;
             }
@@ -83,15 +83,15 @@ public class CdmiClient extends BaseCdmiClient {
 
     public void deleteContainer(String container) throws IOException,
     CdmiException {
-        // add storage access logic here.        
+        // add storage access logic here.
         HttpResponse response = null;
         try {
             // Create the request
             HttpDelete method = new HttpDelete(uri + "/" + encodeURL(container) + "/"); // "http://localhost:8080/cdmi-server/TestContainer/");
-            
+
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             setCustomHeaders(method);
-            
+
             response = client.execute(method, httpContext);
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode == SC_NO_CONTENT)
@@ -114,21 +114,21 @@ public class CdmiClient extends BaseCdmiClient {
 
     public InputStream getObjectAsStream(String container, String object)
             throws IOException, CdmiException {
-        
+
         HttpResponse response = null;
         // Create the request
         HttpGet method = new HttpGet(uri + "/" + encodeURL(container)
-                + "/" + encodeURL(object)); 
-        
+                + "/" + encodeURL(object));
+
         method.setHeader("Accept", "application/cdmi-object");
         method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
         setCustomHeaders(method);
-        
+
         response = client.execute(method, httpContext);
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode == SC_OK)
             return response.getEntity().getContent();
-        
+
         if (statusCode == SC_NOT_FOUND)
             throw new CdmiFileNotFoundException("object not found: "
                     + container + "/" + object, response.getAllHeaders(),
@@ -136,7 +136,7 @@ public class CdmiClient extends BaseCdmiClient {
         throw new CdmiException("unexpected result from server",
                 response.getAllHeaders(), response.getStatusLine());
     }
-    
+
     @SuppressWarnings("unused")
     private void dumpMethod(HttpRequestBase method) {
         System.out.println("==== METHOD BEGIN ====");
@@ -147,7 +147,7 @@ public class CdmiClient extends BaseCdmiClient {
         }
         System.out.println("==== METHOD END ====");
     }
-    
+
     @SuppressWarnings("unused")
     private void dumpResponse(HttpResponse response) {
         System.out.println("==== RESPONSE BEGIN ====");
@@ -165,7 +165,7 @@ public class CdmiClient extends BaseCdmiClient {
         System.out.println("---------");
         System.out.println("==== RESPONSE END ====");
     }
-    
+
     public void storeStreamedObject(String container, String object,
             InputStream data, long length) throws IOException, CdmiClientException {
         // add storage access logic here.
@@ -174,21 +174,21 @@ public class CdmiClient extends BaseCdmiClient {
         HttpResponse response = null;
         try {
             method = new HttpPut(uri + "/" + encodeURL(container)
-                    + "/" + encodeURL(object)); 
-            
+                    + "/" + encodeURL(object));
+
             method.setHeader("Accept", "application/cdmi-object");
             method.setHeader("Content-Type", "application/cdmi-object");
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             setCustomHeaders(method);
-            
+
             CdmiJsonInputStreamEntity entity = new CdmiJsonInputStreamEntity(data, length);
-            
+
             if (length < 0)
                 entity.setChunked(true);
             else {
                 entity.setChunked(false);
             }
-            
+
             method.setEntity(entity);
 
             response = client.execute(method, httpContext);
@@ -210,20 +210,20 @@ public class CdmiClient extends BaseCdmiClient {
                 EntityUtils.consume(response.getEntity());
         }
     }
-  
+
     public void deleteObject(String container, String object)
             throws IOException, CdmiException {
         HttpResponse response = null;
         try {
-            // Create the request      
+            // Create the request
             HttpDelete method = new HttpDelete(uri + "/" + encodeURL(container)
-                    + "/" + encodeURL(object)); 
-            
+                    + "/" + encodeURL(object));
+
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             setCustomHeaders(method);
-            
+
             response = client.execute(method, httpContext);
-            
+
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode == SC_NO_CONTENT)
                 return;
@@ -240,7 +240,7 @@ public class CdmiClient extends BaseCdmiClient {
                 EntityUtils.consume(response.getEntity());
         }
     }
-    
+
     public static String encodeURL(String str) {
         URLCodec codec = new URLCodec();
         try {
@@ -248,5 +248,5 @@ public class CdmiClient extends BaseCdmiClient {
         } catch (EncoderException ee) {
             return str;
         }
-    }    
+    }
 }

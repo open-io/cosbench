@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.controller.service;
 
@@ -38,16 +38,16 @@ import com.intel.cosbench.service.WorkloadLoader;
 
 /**
  * This class is the major service for controller.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 class COSBControllerService implements ControllerService, WorkloadListener {
 
     private static final Logger LOGGER = LogFactory.getSystemLogger();
 
     private AtomicInteger count; /* workload id generator */
-    
+
     private AtomicInteger order;
 
     private ControllerContext context;
@@ -56,7 +56,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
     private WorkloadArchiver archiver = new SimpleWorkloadArchiver();
     private WorkloadLoader loader = new SimpleWorkloadLoader();
     private WorkloadRepository memRepo = new RAMWorkloadRepository();
-    
+
     private boolean loadArch = false;
 
     public COSBControllerService() {
@@ -77,12 +77,12 @@ class COSBControllerService implements ControllerService, WorkloadListener {
             LOGGER.error("Controller Context is not initialized.");
             System.exit(-1);
         }
-        
+
         // initialize workload archiver and loader
         String archive_dir = context.getArchive_dir();
         archiver = new SimpleWorkloadArchiver(archive_dir);
         loader = new SimpleWorkloadLoader(archive_dir);
-                
+
         count = new AtomicInteger(archiver.getTotalWorkloads());
         order = new AtomicInteger(0);
         processors = new HashMap<String, WorkloadProcessor>();
@@ -94,7 +94,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
                         new OrderFutureComparator()));
 
     }
-    
+
     public void loadArchivedWorkload() throws IOException {
         List<WorkloadInfo> workloadContexts = loader.loadWorkloadRun();
         if (workloadContexts == null)
@@ -102,14 +102,14 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         for (WorkloadInfo workloadContext : workloadContexts)
             memRepo.saveWorkload((WorkloadContext) workloadContext);
     }
-    
+
     public void unloadArchivedWorkload() {
         for(WorkloadContext workload : memRepo.getArchivedWorkloads()) {
             memRepo.removeWorkload(workload);
             workload = null;
         }
     }
-    
+
 
     @Override
     public synchronized String submit(XmlConfig config) {
@@ -122,7 +122,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         LOGGER.debug("[ CT ] - workload {} submitted", workload.getId());
         return workload.getId();
     }
-    
+
     @Override
     public String resubmit(String id) throws IOException {
         XmlConfig config = SimpleWorkloadLoader.getWorkloadConfg(memRepo
@@ -144,7 +144,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         context.setState(WorkloadState.QUEUING);
         return context;
     }
-    
+
     public WorkloadLoader getWorkloadLoader() {
         return loader;
     }
@@ -152,10 +152,10 @@ class COSBControllerService implements ControllerService, WorkloadListener {
     public boolean getloadArch() {
         return loadArch;
     }
-    
+
     public void setloadArch(boolean loadArch) {
         this.loadArch = loadArch;
-        
+
         if(getloadArch()){
             try {
                 loadArchivedWorkload();
@@ -166,11 +166,11 @@ class COSBControllerService implements ControllerService, WorkloadListener {
             unloadArchivedWorkload();
         }
     }
-    
+
     private String generateWorkloadId() {
         return "w" + count.incrementAndGet();
     }
-    
+
     private int generateOrder() {
         return order.incrementAndGet();
     }
@@ -197,7 +197,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         if (processor.getWorkloadContext().getFuture() != null)
             throw new IllegalStateException();
         ControllerThread ctrlThrd = new ControllerThread(processor);
-        
+
         Future<?> future = null;
         synchronized(processor) {
             future = executor.submit(ctrlThrd);
@@ -206,7 +206,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         LOGGER.debug("[ CT ] - workload {} started", id);
         yieldExecution(200); // give workload processor a chance
     }
-    
+
     @Override
     public boolean changeOrder(String id, String neighbourWId, boolean up) {
         if (StringUtils.isEmpty(neighbourWId)) {
@@ -239,7 +239,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         }
         Integer[] orderArray = orders.toArray(new Integer[orders.size()]);
         Arrays.sort(orderArray);
-        
+
         if (up) {
             for (int i = orderArray.length - 2; i >= 0; i--) {
                 processors.get(orderWorkloadMap.get(String.valueOf(orderArray[i])))
@@ -265,7 +265,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
         }
         return true;
     }
-    
+
     public boolean changeOrder(String id, boolean up) {
         int order = processors.get(id).getWorkloadContext().getOrder();
         int neighbourOrder = 0;
@@ -360,7 +360,7 @@ class COSBControllerService implements ControllerService, WorkloadListener {
     public WorkloadContext[] getHistoryWorkloads() {
         return memRepo.getInactiveWorkloads();
     }
-    
+
     @Override
     public WorkloadInfo[] getArchivedWorkloads() {
         return memRepo.getArchivedWorkloads();

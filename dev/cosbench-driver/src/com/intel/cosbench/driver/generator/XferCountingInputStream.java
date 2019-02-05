@@ -6,8 +6,8 @@ import org.apache.commons.io.input.CountingInputStream;
 
 /**
  * This class is to record the time of data transfer
- * 
- * 
+ *
+ *
  */
 
 public class XferCountingInputStream extends CountingInputStream{
@@ -16,7 +16,7 @@ public class XferCountingInputStream extends CountingInputStream{
     private boolean isFirstByte = true;
 
     public XferCountingInputStream(InputStream in) {
-        super(in);    
+        super(in);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.intel.cosbench.client.openio;
 
 /**
- * 
+ *
  * @author Christopher Dedeurwaerder
  *
  */

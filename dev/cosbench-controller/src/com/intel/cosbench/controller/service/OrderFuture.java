@@ -8,7 +8,7 @@ class OrderFuture<T> extends FutureTask<T> {
 
     public OrderFuture(Runnable runnable, T value, int order) {
         super(runnable, value);
-        this.order = order;    
+        this.order = order;
     }
 
     public int getOrder() {

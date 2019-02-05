@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.config;
 
@@ -28,7 +28,7 @@ import com.intel.cosbench.log.Logger;
 /**
  * The model class mapping to "workstage" in configuration xml with following form:
  *     <workstage name="name" />
- * 
+ *
  * @author ywang19, qzheng7
  *
  */
@@ -61,11 +61,11 @@ public class Stage implements Iterable<Work> {
             throw new ConfigException("stage name cannot contain delimiter '" + ConfigConstants.DELIMITER + "'");
         this.name = name;
     }
-    
+
     public int getClosuredelay() {
         return closuredelay;
     }
-    
+
     public String getTrigger() {
         return trigger;
     }
@@ -77,7 +77,7 @@ public class Stage implements Iterable<Work> {
     public String getConfig() {
         return config;
     }
-    
+
     public void setConfig(String config) {
         this.config = config;
     }
@@ -86,7 +86,7 @@ public class Stage implements Iterable<Work> {
         if (closuredelay < 0)
             throw new ConfigException("closure delay cannot be negative");
         this.closuredelay = closuredelay;
-    } 
+    }
 
     public Auth getAuth() {
         return auth;
@@ -110,7 +110,7 @@ public class Stage implements Iterable<Work> {
 //        else
             this.storage = storage;
     }
-    
+
     // method for removing nsroot config from prepare, normal and cleanup stages
 //    private Storage removeNSROOTConfig(Storage storage) {
 //        if(storage.getConfig() == null)
@@ -143,7 +143,7 @@ public class Stage implements Iterable<Work> {
             work.setConfig(ConfigUtils.inherit(work.getConfig(), this.config));
              Logger logger = LogFactory.getSystemLogger();
              logger.debug("stage config: "+this.config+ "work inherit result: "+  ConfigUtils.inherit(work.getConfig(), this.config));
-         
+
         }
         this.works = works;
     }

@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.driver.agent;
 
@@ -78,7 +78,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
     public void setWorkerContext(WorkerContext workerContext) {
         super.setWorkerContext(workerContext);
         this.has_histo = workerContext.getMission().hasHisto();
-        
+
         dog.setWorkerContext(workerContext);
     }
 
@@ -114,7 +114,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
     public Logger getLogger() {
         return workerContext.getLogger();
     }
-    
+
     public ErrorStatistics getErrorStatistics(){
         return workerContext.getErrorStatistics();
     }
@@ -182,10 +182,10 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
             }
         doSnapshot();
     }
-        
+
 
     private void performOperation() {
-        if(workerContext.getAuthApi() == null || workerContext.getStorageApi() == null) 
+        if(workerContext.getAuthApi() == null || workerContext.getStorageApi() == null)
             throw new AbortedException();
         if(! workerContext.getStorageApi().isAuthValid())
             reLogin();
@@ -199,7 +199,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
             reLogin();
         }
     }
-    
+
     @Override
     public void onSampleCreated(Sample sample) {
         curr = sample.getTimestamp().getTime();
@@ -256,7 +256,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
                 && (totalBytes <= 0 || getTotalBytes() < totalBytes)) // bytes
             return; // not finished
         doSummary();
-        
+
         workerContext.setFinished(true);
     }
 
@@ -272,7 +272,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
 
     private int getTotalOps() {
 //        return ++op_count;
-        
+
         int sum = 0;
         for (Mark mark : globalMarks)
             sum += mark.getTotalOpCount();
@@ -303,7 +303,7 @@ class WorkAgent extends AbstractAgent implements Session, OperationListener {
             workerContext.getAuthApi().dispose();
             LOGGER.error("agent "+workerContext.getIndex()+" failed to login",ae);
             throw new AgentException();
-        }    
+        }
     }
 
 }

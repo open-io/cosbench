@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.api.httpauth;
 
@@ -25,9 +25,9 @@ import com.intel.cosbench.api.context.AuthContext;
 
 /**
  * This class encapsulates a HttpAuth specific AuthContext.
- * 
+ *
  * @author ywang19
- * 
+ *
  */
 public class HttpAuthContext extends AuthContext {
 
@@ -37,14 +37,14 @@ public class HttpAuthContext extends AuthContext {
         this.put(AUTH_PASSWORD_KEY, password);
         this.put(AUTH_CLIENT_KEY, client);
     }
-    
+
     @Override
     public String getID(String meta) {
         StringBuilder builder = new StringBuilder();
         builder.append(getID());
         builder.append(";meta=");
         builder.append(meta);
-        
+
         return builder.toString();
     }
 
@@ -62,7 +62,7 @@ public class HttpAuthContext extends AuthContext {
         builder.append(AUTH_PASSWORD_KEY);
         builder.append("=");
         builder.append(this.getStr(AUTH_PASSWORD_KEY));
-                
+
         return builder.toString();
     }
 

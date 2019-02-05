@@ -8,7 +8,7 @@ import com.intel.cosbench.model.WorkloadInfo;
 public interface SnapshotLoader {
 
     void init(BufferedReader reader, WorkloadInfo workloadContext,
-            String stageId) throws IOException;    
+            String stageId) throws IOException;
 
     public void load() throws IOException;
 

@@ -27,7 +27,7 @@ public interface S3Constants {
     // CLIENT CONFIGURATION
     // --------------------------------------------------------------------------
     String PROXY_HOST_KEY = "proxyhost";
-    String PROXY_PORT_KEY = "proxyport";    
+    String PROXY_PORT_KEY = "proxyport";
 
     // MAX CONNECTIONS DEFAULT
     // --------------------------------------------------------------------------

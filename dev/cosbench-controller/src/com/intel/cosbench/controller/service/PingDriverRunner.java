@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.controller.service;
 
@@ -59,7 +59,7 @@ public class PingDriverRunner implements Runnable{
             if(!all_alive[i]) {
                 LOGGER.error(driverInfos[i].getName() + " at " + driverInfos[i].getUrl());
             }
-        }        
+        }
     }
 
     @Override
@@ -76,7 +76,7 @@ public class PingDriverRunner implements Runnable{
             try {
                 LOGGER.info("begin to sleep for " + interval + " seconds.");
                 Thread.sleep(interval*1000);
-                LOGGER.info("wake up from sleep.");                
+                LOGGER.info("wake up from sleep.");
             } catch (InterruptedException ie) {
                 LOGGER.warn("thread sleep is interrupted.");
             }
@@ -90,7 +90,7 @@ public class PingDriverRunner implements Runnable{
             String ipAddress = getIpAddres(driver.getUrl());
             Integer port = getDriverPort(driver.getUrl());
             LOGGER.info("Trying to ping driver " + driver.getName() + " at " + driver.getUrl() + " with ip=" + ipAddress + ", port=" + port + "...");
-            if (ipAddress == null || ipAddress.isEmpty()) { 
+            if (ipAddress == null || ipAddress.isEmpty()) {
                 all_alive[i] = false;
                 failures[i] = failure_tolerance;
                 LOGGER.error("the driver ip address shouldn't be empty, the heartbeat is disabled to driver !" + driver.getName());
@@ -116,7 +116,7 @@ public class PingDriverRunner implements Runnable{
                 if (socket != null) {
                     try {
                         socket.close();
-                    }catch (IOException ignore) {                        
+                    }catch (IOException ignore) {
                     }
                 }
             }
@@ -126,7 +126,7 @@ public class PingDriverRunner implements Runnable{
 
     private String getIpAddres(String url) {
         int start = url.indexOf('/') + 2;
-        int end = url.lastIndexOf(':');        
+        int end = url.lastIndexOf(':');
         return end > start ? url.substring(start, end) : null;
     }
 

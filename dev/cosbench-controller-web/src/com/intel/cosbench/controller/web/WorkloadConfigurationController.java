@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.controller.web;
 
@@ -33,7 +33,7 @@ import com.intel.cosbench.web.*;
 
 public class WorkloadConfigurationController extends AbstractController {
 
-    private static final View XML = new XMLView();    
+    private static final View XML = new XMLView();
 
     protected ControllerService controller;
 
@@ -72,7 +72,7 @@ public class WorkloadConfigurationController extends AbstractController {
         String xml = "";
 
         try {
-            workload = constructWorkloadFromPostData(req);             
+            workload = constructWorkloadFromPostData(req);
             xml =  CastorConfigTools.getWorkloadWriter().toXmlString(workload);
 
         } catch (Exception e) {
@@ -214,7 +214,7 @@ public class WorkloadConfigurationController extends AbstractController {
 
                 workStageList.add(stage);
 
-                checkAndAddDelay(req, "cleanup", workStageList, i); 
+                checkAndAddDelay(req, "cleanup", workStageList, i);
             }
 
             return workStageList;
@@ -285,7 +285,7 @@ public class WorkloadConfigurationController extends AbstractController {
 //        String val = getParm(req, parm);
 //        if(val == null || val.isEmpty())
 //            return defVal;
-//        
+//
 //        return Integer.parseInt(val);
 //    }
 
@@ -529,7 +529,7 @@ public class WorkloadConfigurationController extends AbstractController {
                 stage.setStorage(removeNSROOTConfig(workload.getStorage()));
                 workflow.addStage(stage);
             }
-        }       
+        }
 
         ArrayList<Object> normalStageList = constructNormalStage(req);
         if (normalStageList != null) {
@@ -538,7 +538,7 @@ public class WorkloadConfigurationController extends AbstractController {
                 stage.setStorage(removeNSROOTConfig(workload.getStorage()));
                 workflow.addStage(stage);
             }
-        }    
+        }
 
         ArrayList<Object> cleanupStageList = constructCleanupStage(req);
         if (cleanupStageList != null) {
@@ -547,14 +547,14 @@ public class WorkloadConfigurationController extends AbstractController {
                 stage.setStorage(removeNSROOTConfig(workload.getStorage()));
                 workflow.addStage(stage);
             }
-        }  
+        }
 
         ArrayList<Object> disposeStageList = constructDisposeStage(req);
         if (disposeStageList != null) {
             for (int i = 0; i < disposeStageList.size(); i++) {
                 workflow.addStage((Stage) disposeStageList.get(i));
             }
-        }    
+        }
 
         workload.setWorkflow(workflow);
 
@@ -570,7 +570,7 @@ public class WorkloadConfigurationController extends AbstractController {
         return result;
     }
 
-    private ModelAndView createSuccResult(String xml) {        
+    private ModelAndView createSuccResult(String xml) {
         ModelAndView result = new ModelAndView(XML, "xml", xml);
         result.addObject("cInfo", controller.getControllerInfo());
         return result;

@@ -31,7 +31,7 @@ public class Trigger extends TriggerHttpTasklet {
         int idxLeft = StringUtils.indexOf(trigger, '(');
         int idxRight = StringUtils.indexOf(trigger, ')');
         if (idxLeft < 3 || ( idxRight != trigger.length()-1)
-                || !StringUtils.substring(trigger, idxLeft-3, idxLeft).equals(".sh")){ 
+                || !StringUtils.substring(trigger, idxLeft-3, idxLeft).equals(".sh")){
             LOGGER.error("trigger format is illegal, it should be like trigger=\"*.sh(arg1, arg2,...)\"");
             return null;
         }

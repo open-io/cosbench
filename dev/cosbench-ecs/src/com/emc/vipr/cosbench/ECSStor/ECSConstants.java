@@ -18,7 +18,7 @@ package com.emc.vipr.cosbench.ECSStor;
 /**
  * Constants for use with EMC ECS Storage API plugin
  * for COSBench.
- * 
+ *
  * The EMC ECS plugin requires at least access key and
  * secret key to be user-defined. If unspecified, ECS
  * endpoint will default to s3.amazonaws.com with a connection

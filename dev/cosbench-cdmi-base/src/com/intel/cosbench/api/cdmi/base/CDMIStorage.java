@@ -23,7 +23,7 @@ public class CDMIStorage extends NoneStorage {
     // below parameters expect to get from configuration file.
     private int timeout;
     private String rootPath;
-    private String type; 
+    private String type;
     private String headers;
     private boolean flag;
 
@@ -49,7 +49,7 @@ public class CDMIStorage extends NoneStorage {
 
         parms.put(ROOT_PATH_KEY, rootPath);
         parms.put(TIMEOUT_KEY, timeout);
-        parms.put(RAISE_DELETE_ERRORS_KEY, flag);        
+        parms.put(RAISE_DELETE_ERRORS_KEY, flag);
         parms.put(CDMI_CONTENT_TYPE_KEY, type);
     }
 
@@ -60,7 +60,7 @@ public class CDMIStorage extends NoneStorage {
             httpClient = (HttpClient) info.get(AUTH_CLIENT_KEY);
             if(httpClient == null) // client is set
                 httpClient = HttpClientUtil.createHttpClient(timeout);
-            url = info.getStr(STORAGE_URL_KEY) + rootPath;            
+            url = info.getStr(STORAGE_URL_KEY) + rootPath;
 
             // subtitute headers
             // "headers=X-AUTH-TOKEN:;"

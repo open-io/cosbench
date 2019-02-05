@@ -16,7 +16,7 @@ import com.intel.cosbench.client.cdmi.util.CdmiJsonInputStreamEntity;
 
 /**
  * This class encapsulates operations to access swift through cdmi middleware (https://github.com/osaddon/cdmi).
- * 
+ *
  * @author ywang19
  *
  */
@@ -26,7 +26,7 @@ public class CdmiSwiftClient {
 
     private String authToken;
     private String storageUrl;
-    
+
     private final static String cdmi_ver = "1.0.1";
 
     public CdmiSwiftClient(HttpClient client) {
@@ -48,15 +48,15 @@ public class CdmiSwiftClient {
         try {
             // Create the request
             HttpPut method = new HttpPut(storageUrl + "/" + encodeURL(container));
-            
+
             method.setHeader("Accept", "application/cdmi-container");
             method.setHeader("Content-Type", "application/cdmi-container");
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             method.setHeader(X_AUTH_TOKEN, authToken);
-            
+
             response = client.execute(method);
             int statusCode = response.getStatusLine().getStatusCode();
- 
+
             if (statusCode == SC_CREATED || statusCode == SC_ACCEPTED) {
                 return;
             }
@@ -70,15 +70,15 @@ public class CdmiSwiftClient {
 
     public void deleteContainer(String container) throws IOException,
     SwiftException {
-        // add storage access logic here.        
+        // add storage access logic here.
         HttpResponse response = null;
         try {
             // Create the request
-            HttpDelete method = new HttpDelete(storageUrl + "/" + encodeURL(container)); 
-            
+            HttpDelete method = new HttpDelete(storageUrl + "/" + encodeURL(container));
+
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             method.setHeader(X_AUTH_TOKEN, authToken);
-            
+
             response = client.execute(method);
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode == SC_NO_CONTENT)
@@ -101,21 +101,21 @@ public class CdmiSwiftClient {
 
     public InputStream getObjectAsStream(String container, String object)
             throws IOException, SwiftException {
-        
+
         HttpResponse response = null;
         // Create the request
         HttpGet method = new HttpGet(storageUrl + "/" + encodeURL(container)
-                + "/" + encodeURL(object)); 
-        
+                + "/" + encodeURL(object));
+
         method.setHeader("Accept", "application/cdmi-object");
         method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
         method.setHeader(X_AUTH_TOKEN, authToken);
 
-        response = client.execute(method);        
+        response = client.execute(method);
         int statusCode = response.getStatusLine().getStatusCode();
         if (statusCode == SC_OK)
             return response.getEntity().getContent();
-        
+
         if (statusCode == SC_NOT_FOUND)
             throw new SwiftFileNotFoundException("object not found: "
                     + container + "/" + object, response.getAllHeaders(),
@@ -123,7 +123,7 @@ public class CdmiSwiftClient {
         throw new SwiftException("unexpected result from server",
                 response.getAllHeaders(), response.getStatusLine());
     }
-    
+
     @SuppressWarnings("unused")
     private void dumpMethod(HttpRequestBase method) {
         System.out.println("==== METHOD BEGIN ====");
@@ -134,7 +134,7 @@ public class CdmiSwiftClient {
         }
         System.out.println("==== METHOD END ====");
     }
-    
+
     @SuppressWarnings("unused")
     private void dumpResponse(HttpResponse response) {
         System.out.println("==== RESPONSE BEGIN ====");
@@ -152,7 +152,7 @@ public class CdmiSwiftClient {
         System.out.println("---------");
         System.out.println("==== RESPONSE END ====");
     }
-    
+
     public void storeStreamedObject(String container, String object,
             InputStream data, long length) throws IOException, CdmiSwiftClientException {
         // add storage access logic here.
@@ -161,21 +161,21 @@ public class CdmiSwiftClient {
         HttpResponse response = null;
         try {
             method = new HttpPut(storageUrl + "/" + encodeURL(container)
-                    + "/" + encodeURL(object)); 
-            
+                    + "/" + encodeURL(object));
+
             method.setHeader("Accept", "application/cdmi-object");
             method.setHeader("Content-Type", "application/cdmi-object");
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             method.setHeader(X_AUTH_TOKEN, authToken);
 
             CdmiJsonInputStreamEntity entity = new CdmiJsonInputStreamEntity(data, length);
-            
+
             if (length < 0)
                 entity.setChunked(true);
             else {
                 entity.setChunked(false);
             }
-            
+
             method.setEntity(entity);
 
             response = client.execute(method);
@@ -197,20 +197,20 @@ public class CdmiSwiftClient {
                 EntityUtils.consume(response.getEntity());
         }
     }
-  
+
     public void deleteObject(String container, String object)
             throws IOException, SwiftException {
         HttpResponse response = null;
         try {
-            // Create the request      
+            // Create the request
             HttpDelete method = new HttpDelete(storageUrl + "/" + encodeURL(container)
-                    + "/" + encodeURL(object)); 
-            
+                    + "/" + encodeURL(object));
+
             method.setHeader("X-CDMI-Specification-Version", cdmi_ver);
             method.setHeader(X_AUTH_TOKEN, authToken);
-            
+
             response = client.execute(method);
-            
+
             int statusCode = response.getStatusLine().getStatusCode();
             if (statusCode == SC_NO_CONTENT)
                 return;
@@ -227,7 +227,7 @@ public class CdmiSwiftClient {
                 EntityUtils.consume(response.getEntity());
         }
     }
-    
+
     public static String encodeURL(String str) {
         URLCodec codec = new URLCodec();
         try {
@@ -235,5 +235,5 @@ public class CdmiSwiftClient {
         } catch (EncoderException ee) {
             return str;
         }
-    }    
+    }
 }

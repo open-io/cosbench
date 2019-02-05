@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.controller.service;
 
@@ -34,9 +34,9 @@ import com.intel.cosbench.service.CancelledException;
 
 /**
  * This class encapsulates one control class to run stages.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 class StageRunner implements StageCallable {
 
@@ -171,7 +171,7 @@ class StageRunner implements StageCallable {
                 }
             }
             LOGGER.info("acceptable failure ratio of work {} = {}", id+"-"+work.getName(), (double)work.getAfr() / 1000000);
-            LOGGER.info("real failure ratio of work {} = {}", id+"-"+work.getName(), 
+            LOGGER.info("real failure ratio of work {} = {}", id+"-"+work.getName(),
                     sumTotalSampleCount > 0 ? (double)(sumTotalSampleCount - sumSampleCount) / sumTotalSampleCount : "N/A");
             if ((sumTotalSampleCount - sumSampleCount) > sumTotalSampleCount * work.getAfr() / 1000000) {
                 LOGGER.info("fail to reach the goal of acceptable failure ratio in stage {} - work {}", id, work.getName());

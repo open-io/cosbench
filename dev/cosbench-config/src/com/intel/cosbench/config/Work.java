@@ -1,5 +1,5 @@
-/** 
- 
+/**
+
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.config;
 
@@ -25,9 +25,9 @@ import com.intel.cosbench.config.common.ConfigUtils;
 
 /**
  * The model class mapping to "work" in configuration xml with following form:
- *     <work type="type" workers="workers" division="division" 
+ *     <work type="type" workers="workers" division="division"
  *         rampup="rampup" rampdown="rampdown" runtime="runtime" config="config" ... />
- * 
+ *
  * @author ywang19, qzheng7
  *
  */
@@ -48,7 +48,7 @@ public class Work implements Iterable<Operation> {
     private String driver;
     private String config = "";
     private Auth auth;
-    private Storage storage;    
+    private Storage storage;
     private List<Operation> operations;
 
     public Work() {
@@ -208,7 +208,7 @@ public class Work implements Iterable<Operation> {
             throw new ConfigException("a work must have its storge");
         this.storage = storage;
     }
-    
+
     public int getAfr() {
         return afr;
     }
@@ -217,7 +217,7 @@ public class Work implements Iterable<Operation> {
         if (afr > 1000000 || afr < 0)
             throw new ConfigException("afr should be at 0 to 1000000 range");
         this.afr = afr;
-    }    
+    }
 
     public List<String> getOperationIDs() {
         List<String> opIds = new ArrayList<String>();
@@ -326,7 +326,7 @@ public class Work implements Iterable<Operation> {
         op.setConfig(StringUtils.join(cfgs, ';'));
         setOperations(Collections.singletonList(op));
     }
-    
+
     public void toDelayWork() {
         if (name == null)
             name = "delay";
@@ -341,8 +341,8 @@ public class Work implements Iterable<Operation> {
         op.setRatio(100);
         op.setConfig("");
         setOperations(Collections.singletonList(op));
-    } 
-    
+    }
+
     private void setDefaultAfr(int def) {
         if (afr < 0)
             setAfr(def);
@@ -358,8 +358,8 @@ public class Work implements Iterable<Operation> {
         else if (type.equals("dispose"))
             toDisposeWork();
         else if (type.equals("delay"))
-            toDelayWork(); 
-        else 
+            toDelayWork();
+        else
             setDefaultAfr(200000);
         setName(getName());
         setWorkers(getWorkers());

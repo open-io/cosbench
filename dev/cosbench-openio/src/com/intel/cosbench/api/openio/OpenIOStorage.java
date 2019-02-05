@@ -30,7 +30,7 @@ import io.openio.sds.models.ObjectList;
 import io.openio.sds.models.ObjectList.ObjectView;
 
 /**
- * 
+ *
  * @author Christopher Dedeurwaerder
  *
  */

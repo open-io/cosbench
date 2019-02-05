@@ -1,4 +1,4 @@
-/** 
+/**
 
 Copyright 2013 Intel Corporation, All Rights Reserved.
 
@@ -12,8 +12,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License. 
-*/ 
+limitations under the License.
+*/
 
 package com.intel.cosbench.client.amplistor;
 
@@ -33,9 +33,9 @@ import com.intel.cosbench.client.http.HttpClientUtil;
 /**
  * This class encapsulates AmpliStor related REST operations, so far no
  * authentication supported.
- * 
+ *
  * @author ywang19, qzheng7
- * 
+ *
  */
 public class AmpliClient {
 
@@ -183,7 +183,7 @@ public class AmpliClient {
      * unauthorized, 2. server say 401 Unauthorized, use Digest, 3. client
      * retries with Digest, but this will fail, due to the nature of
      * non-repeatable streamed entity).
-     * 
+     *
      * the workaround is to convert streamed (non-repeatable) entity to
      * self-contained (repeatable).
      */
@@ -258,7 +258,7 @@ public class AmpliClient {
 
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             return response.getEntity().getContent();
-        } 
+        }
         EntityUtils.consume(response.getEntity());
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND) {
             return response.getEntity().getContent();
