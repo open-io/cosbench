@@ -134,7 +134,6 @@ public class S3Storage extends NoneStorage {
         super.createContainer(container, config);
         try {
             if(!client.doesBucketExist(container)) {
-
                 client.createBucket(container);
             }
         } catch(AmazonServiceException ase) {
